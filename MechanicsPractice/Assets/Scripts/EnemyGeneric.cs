@@ -110,6 +110,7 @@ public class EnemyGeneric : MonoBehaviour
         {
             Destroy(hitPlayer.gameObject);
             this.enabled = false;
+            GameManagerScript.instance.ChangeLevel(4);
         }
 
         canAttack = true;

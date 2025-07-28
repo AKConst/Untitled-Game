@@ -1,14 +1,22 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class FacePlayer : MonoBehaviour
 {
-    [SerializeField] private Transform playerPos;
+    private Transform playerPos;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        playerPos = GameObject.Find("PlayerCharacter").transform;
+    }
+
     void Update()
     {
-        Vector3 rotation = playerPos.position - transform.position;
-        float roZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, roZ);
+        if (playerPos != null)
+        {
+            Vector3 rotation = playerPos.position - transform.position;
+            float roZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, roZ);
+        }
     }
 }
