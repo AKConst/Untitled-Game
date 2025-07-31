@@ -5,11 +5,11 @@ public class mainMenuScript : MonoBehaviour
 {
     public void LoadLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0); //load 1st scene
     }
 
     public void QuitGame()
     {
-        Application.Quit();
+        Application.Quit(); //we quit the game
     }
 }

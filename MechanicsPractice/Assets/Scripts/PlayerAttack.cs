@@ -3,33 +3,42 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private Vector3 mousePos;
-    [SerializeField] private Transform attackPos;
-    [SerializeField] private LayerMask whatIsEnemy;
-    [SerializeField] private float attackRange;
+    private Vector3 mousePos; //variable for our mouse position
+    [SerializeField] private Transform attackPos; //reference to the position of the place our attack will spawn at
+    [SerializeField] private LayerMask whatIsEnemy; //layer mask to know what is enemy for detection
+    [SerializeField] private float attackRange; //the range of our attack
 
-    [SerializeField] private GameObject attackIndicator;
+    [SerializeField] private GameObject attackIndicator; //reference to the attack indicator
 
     void Update()
     {
+        //calculate the value of the mouse position
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //set the appropriate rotation to where the player is looking (towards the mouse, from the player)
         Vector3 rotation = mousePos - transform.position;
         float roZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, roZ);
 
+        //check if the player pressed mouse1
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            //if so, we instantiate the attack indicator sprite, we then start a coroutine to delete it after
+            //an appropriate amount of time
             GameObject indicatorInstance = Instantiate(attackIndicator, attackPos.position, Quaternion.identity);
             StartCoroutine(deleteIndicator(indicatorInstance));
 
+            //we check if any enemies fell within our attack range
             Collider2D[] enemiesEffected = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
             foreach(Collider2D enemy in enemiesEffected)
             {
+                //if they did, destroy them
                 Destroy(enemy.gameObject);
             }
         }
     }
 
+    //drawing gizmos to better visualize the attack ranges etc.
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -38,6 +47,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator deleteIndicator(GameObject ind)
     {
+        //wait for 0.1 seconds before deleting the attack sprite
         yield return new WaitForSeconds(0.1f);
         Destroy(ind);
     }

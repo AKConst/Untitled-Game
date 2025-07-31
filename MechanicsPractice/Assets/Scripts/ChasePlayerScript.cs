@@ -1,3 +1,5 @@
+//THIS SCRIPT IS NOT IN USE, CAN BE DELETED BUT ALSO USED AS POTENTIAL FUTURE REFERENCE 
+
 using NUnit.Framework;
 using System.Collections;
 using System.Linq;
