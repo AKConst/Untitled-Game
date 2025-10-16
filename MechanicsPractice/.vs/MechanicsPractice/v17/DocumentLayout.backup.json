@@ -1,0 +1,284 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|c:\\users\\mkuno\\desktop\\untitledgame\\untitled-game\\mechanicspractice\\assets\\scripts\\enemygeneric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemygeneric.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|c:\\users\\mkuno\\desktop\\untitledgame\\untitled-game\\mechanicspractice\\assets\\scripts\\enemyattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\attack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\attack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\gamemanagerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanagerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\savedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\savedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\savedatascript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\savedatascript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\mainmenuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mainmenuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\pathfindai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pathfindai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\pausemenuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pausemenuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\ingameuiscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ingameuiscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\ingameitemscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ingameitemscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\deathscreenscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\deathscreenscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\chaseplayerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\chaseplayerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\changescenescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\changescenescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAuwBEAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:50:04.335Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyGeneric.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\EnemyGeneric.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyGeneric.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\EnemyGeneric.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyGeneric.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAowCUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:41.278Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerAttack.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerAttack.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerAttack.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAnwCsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:50:02.432Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameManagerScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\GameManagerScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameManagerScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\GameManagerScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameManagerScript.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:46.165Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnemyAttack.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\EnemyAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAttack.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\EnemyAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyAttack.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T15:08:33.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Attack.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\Attack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Attack.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\Attack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Attack.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwBAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T17:48:05.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SaveDataScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\SaveDataScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SaveDataScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\SaveDataScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SaveDataScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:50:08.817Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SaveData.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\SaveData.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SaveData.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\SaveData.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SaveData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:50:06.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PauseMenuScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PauseMenuScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PauseMenuScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PauseMenuScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PauseMenuScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:50:00.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PathFindAI.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PathFindAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PathFindAI.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PathFindAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PathFindAI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:58.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "mainMenuScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\mainMenuScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\mainMenuScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\mainMenuScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\mainMenuScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:56.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ingameUiScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\ingameUiScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ingameUiScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\ingameUiScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ingameUiScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:51.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IngameItemScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\IngameItemScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\IngameItemScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\IngameItemScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\IngameItemScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:48.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "deathScreenScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\deathScreenScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\deathScreenScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\deathScreenScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\deathScreenScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:38.84Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ChasePlayerScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\ChasePlayerScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ChasePlayerScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\ChasePlayerScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ChasePlayerScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:49:32.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "changeSceneScript.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\changeSceneScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\changeSceneScript.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\changeSceneScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\changeSceneScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T09:48:57.633Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using Unity.Android.Gradle;
+using System;
 
 public class EnemyGeneric : MonoBehaviour
 {
@@ -13,9 +15,11 @@ public class EnemyGeneric : MonoBehaviour
     [SerializeField] private Transform attackPos; //position where the attack will spawn
     [SerializeField] private GameObject attackSprite; //sprite for the attack
 
+
     //booleans for keeping track of attack status
     private bool canAttack = true; 
     private bool isAttacking = false;
+    [SerializeField] private GameObject AttackCircle;
 
     //different Collider2D areas to check various conditions to change enemy state
     private Collider2D playerLeaveArea; //ended up being unnecessary, will leave here if useful at any point
@@ -122,21 +126,37 @@ public class EnemyGeneric : MonoBehaviour
         Destroy(eAtkIndicatorInstance);
 
         //we instantiate the sprite for the enemy attack
-        GameObject eAtkHitAreaInstance = Instantiate(attackSprite, attackPos.position, Quaternion.identity);
+        //GameObject eAtkHitAreaInstance = Instantiate(attackSprite, attackPos.position, Quaternion.identity);
         //after waiting 0.1 seconds, we destroy the attack indicator
-        yield return new WaitForSeconds(0.1f);
-        Destroy(eAtkHitAreaInstance);
+        //yield return new WaitForSeconds(0.1f);
+        //Destroy(eAtkHitAreaInstance);
 
         //we create an overlap circle that represents the attack hit area, and if the player was hit
         //we destroy the player game object, disable this script and change the level to the death screen
         //which is currently at index 4.
-        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPos.position, atkHitRange, whatIsPlayer);
-        if (hitPlayer != null)
+        //Collider2D hitPlayer = Physics2D.OverlapCircle(attackPos.position, atkHitRange, whatIsPlayer);
+        
+        GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.identity);
+        StartCoroutine(deleteIndicator(Attack));
+        
+        /*if (hitPlayer != null)
         {
-            Destroy(hitPlayer.gameObject);
-            this.enabled = false;
-            GameManagerScript.instance.ChangeLevel(4);
-        }
+            PlayerAttack player = hitPlayer.GetComponentInChildren<PlayerAttack>(); // finds the PlayerAttack script to check if player is blocking
+            if (player == null)
+            {
+                Debug.Log("player null"); //error player is not found
+            }
+            else if(!player.isAttacking) // Player is not attacking
+            {
+                Destroy(hitPlayer.gameObject);
+                this.enabled = false;
+                GameManagerScript.instance.ChangeLevel(4);
+            }
+            else if (player.isAttacking)// Player is attacking
+            {
+                Debug.Log("Attack was blocked!");
+            }
+        }*/
 
         //setting our attack status booleans
         canAttack = true;
@@ -157,5 +177,12 @@ public class EnemyGeneric : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, LeavePlayerRange);
+    }
+
+    private IEnumerator deleteIndicator(GameObject ind)
+    {
+        //wait for 0.1 seconds before deleting the attack sprite
+        yield return new WaitForSeconds(0.3f);
+        Destroy(ind);
     }
 }

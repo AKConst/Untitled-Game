@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,8 +8,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform attackPos; //reference to the position of the place our attack will spawn at
     [SerializeField] private LayerMask whatIsEnemy; //layer mask to know what is enemy for detection
     [SerializeField] private float attackRange; //the range of our attack
-
     [SerializeField] private GameObject attackIndicator; //reference to the attack indicator
+    [SerializeField] public bool isAttacking = false;
+    [SerializeField] private GameObject AttackCircle;
+    
 
     void Update()
     {
@@ -25,17 +28,16 @@ public class PlayerAttack : MonoBehaviour
         {
             //if so, we instantiate the attack indicator sprite, we then start a coroutine to delete it after
             //an appropriate amount of time
-            GameObject indicatorInstance = Instantiate(attackIndicator, attackPos.position, Quaternion.identity);
-            StartCoroutine(deleteIndicator(indicatorInstance));
-
+            //GameObject indicatorInstance = Instantiate(attackIndicator, attackPos.position, Quaternion.identity);
+            //StartCoroutine(deleteIndicator(indicatorInstance));
+            isAttacking = true;
             //we check if any enemies fell within our attack range
-            Collider2D[] enemiesEffected = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
-            foreach(Collider2D enemy in enemiesEffected)
-            {
-                //if they did, destroy them
-                Destroy(enemy.gameObject);
-            }
+            GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.identity);
+            //Collider2D[] enemiesEffected = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+            StartCoroutine(deleteIndicator(Attack));
         }
+        isAttacking = false;
+        
     }
 
     //drawing gizmos to better visualize the attack ranges etc.
@@ -48,7 +50,8 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator deleteIndicator(GameObject ind)
     {
         //wait for 0.1 seconds before deleting the attack sprite
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         Destroy(ind);
     }
+
 }
