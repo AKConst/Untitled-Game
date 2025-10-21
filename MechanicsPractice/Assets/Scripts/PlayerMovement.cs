@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private float movSpeed; //where we can assign value to the players movement speed
     private float speedX, speedY; //values to store the current X, Y speeds
     private Rigidbody2D rb; //the player rigidbody reference to use to assign force to
-
-    //private Vector2 mousePos; //now obsolete due to dashing change to being keyboard oriented
+    private Animator animator;//player animator for animations
+    private Vector2 dir; 
 
     //various settings regarding the dash such as the distance, duration and cooldown, as well as the direction
     //which gets calculated when the dash is started
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //assigning value to our rigidbody variable
+        animator = GetComponent<Animator>(); //assigining value to our animator variable
+        animator.SetFloat("LastH", -1);
     }
 
     // Update is called once per frame
@@ -34,9 +36,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing) return; //if the player is dashing we dont calculate forces for regular movement
 
-        //we calculate the speed on the X and Y axis based on player input, multiplied by the speed.
-        speedX = Input.GetAxisRaw("Horizontal") * movSpeed;
-        speedY = Input.GetAxisRaw("Vertical") * movSpeed;
+        //set last movement values
+        if (dir.x != 0 || dir.y != 0)
+        {
+            animator.SetFloat("LastH", dir.x);
+            animator.SetFloat("LastV", dir.y);
+        }
+
+            //we calculate the speed on the X and Y axis based on player input, multiplied by the speed.
+            dir.x = Input.GetAxisRaw("Horizontal");
+        dir.y = Input.GetAxisRaw("Vertical");
+        speedX = dir.x * movSpeed;
+        speedY = dir.y * movSpeed;
+       
+        //set new values for movement
+        animator.SetFloat("Horizontal", dir.x);
+        animator.SetFloat("Vertical", dir.y);
+        animator.SetFloat("Speed", dir.sqrMagnitude);
 
         //begin the dash on proper input as well as valid status
         if (Input.GetKeyDown(KeyCode.Space) && canDash)

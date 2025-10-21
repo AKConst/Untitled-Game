@@ -54,9 +54,10 @@ public class PathFindAI : MonoBehaviour
         }
 
         Vector2 dir = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = dir * speed * Time.deltaTime;
+        //Vector2 force = dir * speed * Time.deltaTime;
 
-        rb.linearVelocity = dir * speed * Time.deltaTime;
+        //rb.linearVelocity = dir * speed * Time.deltaTime
+        rb.linearVelocity = dir * speed * Time.fixedDeltaTime;
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         if (distance < nextWaypointDistance)

@@ -23,9 +23,10 @@ public class EnemyAttack : MonoBehaviour
             Destroy(gameObject);
         }
         else if (other.gameObject.layer == 7)  // Player layer
-        {   
+        {
             Debug.Log("player hit");
-            Destroy(other.gameObject);  // Destroy player
+            Destroy(other.gameObject);
+            GameManagerScript.instance.ChangeLevel(4);// Destroy player
         }
     }
 }
