@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         if (isDashing) return; //if the player is dashing we dont calculate forces for regular movement
-
         //set last movement values
         if (dir.x != 0 || dir.y != 0)
         {
@@ -43,8 +42,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastV", dir.y);
         }
 
-            //we calculate the speed on the X and Y axis based on player input, multiplied by the speed.
-            dir.x = Input.GetAxisRaw("Horizontal");
+        //we calculate the speed on the X and Y axis based on player input, multiplied by the speed.
+        dir.x = Input.GetAxisRaw("Horizontal");
         dir.y = Input.GetAxisRaw("Vertical");
         speedX = dir.x * movSpeed;
         speedY = dir.y * movSpeed;
@@ -53,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", dir.x);
         animator.SetFloat("Vertical", dir.y);
         animator.SetFloat("Speed", dir.sqrMagnitude);
+        
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            return;
+        }
 
         //begin the dash on proper input as well as valid status
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
@@ -68,7 +72,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDashing) return;
-
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) 
+        {
+            rb.linearVelocity = new Vector2(0, 0);
+            return; 
+        }
         rb.linearVelocity = new Vector2(speedX, speedY); //applying the force for our regular movement.
     }
 

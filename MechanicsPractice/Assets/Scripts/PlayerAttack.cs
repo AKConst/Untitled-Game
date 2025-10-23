@@ -11,8 +11,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject attackIndicator; //reference to the attack indicator
     [SerializeField] public bool isAttacking = false;
     [SerializeField] private GameObject AttackCircle;
-    
+    private Animator animator; //animator is needed to do attack animation  
 
+    private void Start()
+    {
+        animator = GetComponentInParent<Animator>();        
+    }
     void Update()
     {
         //calculate the value of the mouse position
@@ -35,8 +39,14 @@ public class PlayerAttack : MonoBehaviour
             GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.identity);
             //Collider2D[] enemiesEffected = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
             StartCoroutine(deleteIndicator(Attack));
+            animator.SetBool("Attack", true);
+
         }
-        isAttacking = false;
+        else
+        {
+            animator.SetBool("Attack", false);
+        }
+            isAttacking = false;
         
     }
 
