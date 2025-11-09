@@ -53,10 +53,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", dir.y);
         animator.SetFloat("Speed", dir.sqrMagnitude);
         
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            return;
-        }
 
         //begin the dash on proper input as well as valid status
         if (Input.GetKeyDown(KeyCode.Space) && canDash)

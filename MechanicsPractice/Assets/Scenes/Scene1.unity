@@ -2283,7 +2283,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1655454423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2403,7 +2403,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 2
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2415,7 +2415,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.514104, y: 0.4817567}
+  m_Size: {x: 1.71, y: 8.14}
   m_EdgeRadius: 0
 --- !u!95 &1655454427
 Animator:
@@ -2791,7 +2791,7 @@ MonoBehaviour:
   attackRange: 1
   attackIndicator: {fileID: 3616959349195119920, guid: 938e102ec1feee945bf8e86d756a9e68, type: 3}
   isAttacking: 0
-  AttackCircle: {fileID: 3397936276951968608, guid: c3784b18f6dc6d24685fe129c00e0ad1, type: 3}
+  AttackCircle: {fileID: 4249168510230731092, guid: 80141e88cf6eda74484de5dff13435db, type: 3}
 --- !u!1 &2107894671
 GameObject:
   m_ObjectHideFlags: 0
