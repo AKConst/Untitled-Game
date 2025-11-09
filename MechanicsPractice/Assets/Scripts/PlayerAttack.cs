@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
         {
             animator.SetBool("Attack", false);
         }
-            isAttacking = false;
+        isAttacking = false;
         
     }
 
@@ -60,7 +60,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator deleteIndicator(GameObject ind)
     {
         //wait for 0.1 seconds before deleting the attack sprite
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
         Destroy(ind);
     }
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
-using Unity.Android.Gradle;
 using System;
 
 public class EnemyGeneric : MonoBehaviour
@@ -14,6 +13,15 @@ public class EnemyGeneric : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer; //layermask to know whether or not something is the player
     [SerializeField] private Transform attackPos; //position where the attack will spawn
     [SerializeField] private GameObject attackSprite; //sprite for the attack
+    [SerializeField] private int enemyHealth; //value to keep track of enemy HP
+    //value to keep track when enemy will be staggered after a successful parry
+    [SerializeField] private int enemyStaggerCount;
+    private int enemyStaggerCountLive; //the value that we update and check. Will be reset to original value once <=0
+    //value to keep track of how many times the enemy will be able to finish an attack if interrupted by player attack
+    [SerializeField] private int enemyFocusCount;
+    private int enemyFocusCountLive; //the value that we update and check. Will be reset to original value once <=0
+    private bool isStaggered = false; //to keep staggered status
+    [SerializeField] private float focusRegainTime; //value to assign the value of how much time the enemy will refocus
 
 
     //booleans for keeping track of attack status
@@ -38,7 +46,7 @@ public class EnemyGeneric : MonoBehaviour
     private MonoBehaviour atkAlignScript; 
 
     //enum of the various enemy states, as well as a variable to store the current state
-    private enum enemyState { enemyChase, enemyIdle, enemyAttack }; 
+    private enum enemyState { enemyChase, enemyIdle, enemyAttack, enemyDamaged, enemyStaggered}; 
     private enemyState currState;
 
     void Start()
@@ -49,6 +57,10 @@ public class EnemyGeneric : MonoBehaviour
         {
             item.enabled = false;
         }
+
+        //assigning the initial values for the variables that will vary/change
+        enemyStaggerCountLive = enemyStaggerCount;
+        enemyFocusCountLive = enemyFocusCount;
     }
 
     void Update()
@@ -84,11 +96,30 @@ public class EnemyGeneric : MonoBehaviour
                     item.enabled = false;
                 }
                 break;
+            //we essentially put the functionality as if the enemy were idling, needs better implementation for
+            //putting the enemy in an inactive state cause this is too much code reuse
+            case enemyState.enemyDamaged:
+                Debug.Log("Enemy is damaged");
+                foreach (MonoBehaviour item in chaseScripts)
+                {
+                    item.enabled = false;
+                }
+                break;
+            case enemyState.enemyStaggered:
+                Debug.Log("Enemy is staggered!");   
+                foreach (MonoBehaviour item in chaseScripts)
+                {
+                    item.enabled = false;
+                }
+                break;
         }
     }
 
     private void updateState()
     {
+        //if the enemy is in a damaged or staggered state, we don't update our further
+        if (currState == enemyState.enemyDamaged || currState == enemyState.enemyStaggered) { return; }
+
         //we draw 3 different areas, each for checking conditions for different states
         playerLeaveArea = Physics2D.OverlapCircle(transform.position, LeavePlayerRange, whatIsPlayer);
         playerDetectArea = Physics2D.OverlapCircle(transform.position, DetectRange, whatIsPlayer);
@@ -123,6 +154,10 @@ public class EnemyGeneric : MonoBehaviour
         eAtkIndicatorInstance.transform.parent = transform;
         //we wait for the attack chargeup time to finish before we delete the indicator and proceed with the attack
         yield return new WaitForSeconds(timeToAttack);
+
+        //if the enemy has charged up it's attack but it's state has changed to damaged, the attack will be cancelled
+        if (currState == enemyState.enemyDamaged) { yield return 0; }
+
         Destroy(eAtkIndicatorInstance);
 
         //we instantiate the sprite for the enemy attack
@@ -136,7 +171,9 @@ public class EnemyGeneric : MonoBehaviour
         //which is currently at index 4.
         //Collider2D hitPlayer = Physics2D.OverlapCircle(attackPos.position, atkHitRange, whatIsPlayer);
         
+        //instantiate the enemy attack object, set it's attack sender enemy instance to this enemy
         GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.identity);
+        Attack.GetComponent<EnemyAttack>().enemyInstance = gameObject;
         StartCoroutine(deleteIndicator(Attack));
         
         /*if (hitPlayer != null)
@@ -184,5 +221,66 @@ public class EnemyGeneric : MonoBehaviour
         //wait for 0.1 seconds before deleting the attack sprite
         yield return new WaitForSeconds(0.3f);
         Destroy(ind);
+    }
+
+    private IEnumerator staggerEnemy(float staggerTime)
+    {
+        //we put the enemy in a staggered state-wait X amt of time-reset the state and stagger counter.
+        currState = enemyState.enemyStaggered;
+        yield return new WaitForSeconds(staggerTime);
+        enemyStaggerCountLive = enemyStaggerCount;
+        currState = enemyState.enemyIdle;
+        Debug.Log("Enemy Exited Staggered State!");
+    }
+
+    private IEnumerator resetFocus()
+    {
+        //we put the enemy in a damaged state-wait X amt of time-reset the state and focus counter.
+        currState = enemyState.enemyDamaged;
+        yield return new WaitForSeconds(focusRegainTime);
+        enemyFocusCountLive = enemyFocusCount;
+        currState = enemyState.enemyIdle;
+    }
+
+    //function to check enemy status and run the proper response to the status.
+    public void checkEnemyStatus()
+    {
+        if (enemyHealth <= 0) {
+            Debug.Log("Enemy killed!");
+            Destroy(this.gameObject);
+            return; 
+        }
+        else if (enemyStaggerCountLive <= 0) {
+            Debug.Log("Stagger Enemy!");
+            StartCoroutine(staggerEnemy(1f));
+        }
+        else if (enemyFocusCountLive <= 0)
+        {
+            Debug.Log("Enemy attack can be interrupted!");
+            StartCoroutine(resetFocus());
+        }
+    }
+
+    //function to update enemy status, to change various values regarding the enemy.
+    public void updateEnemyStatus(int valValue, int amp)
+    {
+        switch (valValue)
+        {
+            case 0:
+                Debug.Log("Enemy hit for " + amp + " damage!");
+                enemyHealth -= amp;
+                break;
+            case 1:
+                Debug.Log("Enemy staggered for " + amp + " damage!");
+                enemyStaggerCountLive -= amp;
+                break;
+            case 2: 
+                enemyFocusCountLive -= amp;
+                break;
+            default:
+                Debug.Log("Enemy focus deprecated by " + amp + " damage!");
+                Debug.Log("[-] Value Out Of Scope!");
+                break;
+        }
     }
 }
