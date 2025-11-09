@@ -59,13 +59,9 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator deleteIndicator(GameObject ind)
     {
-<<<<<<< HEAD
         //wait for 0.5 seconds before deleting the attack sprite
         yield return new WaitForSeconds(0.5f);
-=======
-        //wait for 0.1 seconds before deleting the attack sprite
-        yield return new WaitForSeconds(0.1f);
->>>>>>> ddbfb59b883f726c81ea0d14eeb0baeb0d863dcd
+
         Destroy(ind);
     }
 
