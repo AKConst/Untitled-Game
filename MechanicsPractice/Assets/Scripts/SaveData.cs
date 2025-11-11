@@ -5,4 +5,5 @@ public class SaveData
 {
     //model for the save data that we will store
     public itemSO[] itemList;
+    public int playerHP;
 }

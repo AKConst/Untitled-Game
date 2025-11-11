@@ -11,7 +11,7 @@ public class InventoryScript : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; //assing the instance to itself
+        instance = this; //assigning the instance to itself
     }
 
     public void Start()

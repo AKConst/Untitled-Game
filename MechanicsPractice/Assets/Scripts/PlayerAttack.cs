@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] Transform slashParent;
     private Vector3 mousePos; //variable for our mouse position
     [SerializeField] private Transform attackPos; //reference to the position of the place our attack will spawn at
     [SerializeField] private LayerMask whatIsEnemy; //layer mask to know what is enemy for detection
@@ -34,6 +35,8 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //initating the attack by setting the proper animator peramaters, increasing the PSC and starting our timer.
+            animator.SetFloat("MouseX", rotation.x);
+            animator.SetFloat("MouseY", rotation.y);
             animator.SetBool("Attack", true);
             animator.SetInteger("StringVal", PSC);
             PSC++;
@@ -53,6 +56,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 AttackDash(rotation.normalized, 30);
                 GameObject FinalAttack = Instantiate(FinalSlash, attackPos.position, Quaternion.Euler(new Vector3(0, 0, roZ - 90)));
+                // running a function for the final attack to follow along with the player
+                FinalAttack.GetComponent<FinalSlash>().initiateFollow(rotation.normalized, 30, 0.20f);
                 StartCoroutine(deleteIndicator(FinalAttack));
                 PSC = 0;
             }
@@ -60,6 +65,8 @@ public class PlayerAttack : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             //initating the attack by setting the proper animator peramaters, increasing the PSC and starting our timer.
+            animator.SetFloat("MouseX", rotation.x);
+            animator.SetFloat("MouseY", rotation.y);
             animator.SetBool("Attack", true);
             animator.SetInteger("StringVal", PSC);
             PSC++;
@@ -78,6 +85,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 AttackDash(rotation.normalized, 30);
                 GameObject FinalAttack = Instantiate(FinalSlash, attackPos.position, Quaternion.Euler(new Vector3(0, 0, roZ - 90)));
+                // running a function for the final attack to follow along with the player
+                FinalAttack.GetComponent<FinalSlash>().initiateFollow(rotation.normalized, 30, 0.20f);
                 StartCoroutine(deleteIndicator(FinalAttack));
                 PSC = 0;
             }
@@ -92,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator deleteIndicator(GameObject ind)
     {
         //wait for 0.5 seconds before deleting the attack sprite
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f); //0.5
         Destroy(ind);
     }
 

@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDashing) return;
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") || animator.GetCurrentAnimatorStateInfo(0).IsName("SecondAttack") || animator.GetCurrentAnimatorStateInfo(0).IsName("FinalSlash"))
         {
             rb.linearVelocity = new Vector2(0, 0);
             return;

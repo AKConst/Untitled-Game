@@ -2,7 +2,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private int playerHealth; //value to track player HP
+    public static PlayerManager instance;
+
+    public static int playerHealth = 100; //value to track player HP
+
+    private void Awake()
+    {
+        instance = this; //assigning the instance to itself    
+    }
 
     //function used to check player status and execute the proper response as necessary
     public void checkPlayerStatus()

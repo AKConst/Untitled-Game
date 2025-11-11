@@ -16,10 +16,12 @@ public class SaveDataScript : MonoBehaviour
     public void SaveGame()
     {
         Debug.Log("Saved Game!");
+        Debug.Log("Saved player HP as " + PlayerManager.playerHealth);
         //creating our save data instance and assigning it the appropriate values
-        SaveData saveData = new SaveData 
+        SaveData saveData = new SaveData
         {
             itemList = InventoryScript.rItems,
+            playerHP = PlayerManager.playerHealth
         };
         //writing the data of the save data instance to a json file
         File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
@@ -36,6 +38,9 @@ public class SaveDataScript : MonoBehaviour
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
             InventoryScript.rItems = saveData.itemList;
             InventoryScript.instance.InitializeInventory();
+
+            PlayerManager.playerHealth = saveData.playerHP;
+            Debug.Log("Assigned player health " + saveData.playerHP);
         }
         else
         {

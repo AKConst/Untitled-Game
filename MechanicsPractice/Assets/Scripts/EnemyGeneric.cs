@@ -99,14 +99,12 @@ public class EnemyGeneric : MonoBehaviour
             //we essentially put the functionality as if the enemy were idling, needs better implementation for
             //putting the enemy in an inactive state cause this is too much code reuse
             case enemyState.enemyDamaged:
-                Debug.Log("Enemy is damaged");
                 foreach (MonoBehaviour item in chaseScripts)
                 {
                     item.enabled = false;
                 }
                 break;
-            case enemyState.enemyStaggered:
-                Debug.Log("Enemy is staggered!");   
+            case enemyState.enemyStaggered:  
                 foreach (MonoBehaviour item in chaseScripts)
                 {
                     item.enabled = false;
