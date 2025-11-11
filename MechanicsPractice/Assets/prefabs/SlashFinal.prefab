@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2040635740946480898}
   - component: {fileID: 1189903322213491470}
   - component: {fileID: 8615181830691294054}
-  - component: {fileID: 6800372043713380686}
-  - component: {fileID: 845455326457891081}
+  - component: {fileID: 7588944821143223194}
+  - component: {fileID: 7755973043286818534}
   m_Layer: 0
-  m_Name: Slash
+  m_Name: SlashFinal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6800372043713380686
+--- !u!114 &7588944821143223194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,12 +173,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4249168510230731092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4608ee5bf9d2295499d5f9a75c521254, type: 3}
+  m_Script: {fileID: 11500000, guid: e48f632ccd83f414495a04749f484c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamage: 50
-  focusDamage: 1
---- !u!95 &845455326457891081
+  playerDamage: 100
+  focusDamage: 2
+--- !u!95 &7755973043286818534
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ Animator:
   m_GameObject: {fileID: 4249168510230731092}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2f4f83b416c0ec441a7996085fb811ee, type: 2}
+  m_Controller: {fileID: 9100000, guid: fe26a320a3284c74a908309020a06df6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

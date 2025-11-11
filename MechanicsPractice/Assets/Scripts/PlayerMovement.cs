@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float speedX, speedY; //values to store the current X, Y speeds
     private Rigidbody2D rb; //the player rigidbody reference to use to assign force to
     private Animator animator;//player animator for animations
-    private Vector2 dir; 
+    private Vector2 dir;
 
     //various settings regarding the dash such as the distance, duration and cooldown, as well as the direction
     //which gets calculated when the dash is started
@@ -61,22 +61,25 @@ public class PlayerMovement : MonoBehaviour
             //added onto the dash force
             rb.linearVelocity = new Vector2(0, 0);
             dashDir = new Vector2(speedX, speedY).normalized; //calculating the dash direction based on the axis inputs
-            StartCoroutine(Dash());//starting our dash in a coroutine
+            StartCoroutine(Dash(dashDir, dashDistance));//starting our dash in a coroutine
         }
     }
 
     private void FixedUpdate()
     {
         if (isDashing) return;
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             rb.linearVelocity = new Vector2(0, 0);
-            return; 
+            return;
         }
-        rb.linearVelocity = new Vector2(speedX, speedY); //applying the force for our regular movement.
+        else
+        {
+            rb.linearVelocity = new Vector2(speedX, speedY); //applying the force for our regular movement.
+        }
     }
 
-    private IEnumerator Dash()
+    public IEnumerator Dash(Vector2 ddir, float ddist)
     {
         Debug.Log("Start Dash!");
         //setting our dashing status booleans to their appropriate values
@@ -85,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
         // calculating the force that needs to be applied by the direction for the dash ad its distance
         //we then proceed to wait the amount of seconds that the dash should last before proceeding
-        rb.linearVelocity = dashDir * dashDistance;
+        rb.linearVelocity = ddir * ddist;
         yield return new WaitForSeconds(dashDuration);
 
         Debug.Log("End Dash!");
