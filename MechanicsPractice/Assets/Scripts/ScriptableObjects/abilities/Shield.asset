@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   name: Shield
-  cooldownTime: 4
-  activeTime: 1
+  cooldownTime: 5
+  activeTime: 10
   shieldParticle: {fileID: 1032238953545693180, guid: 4269e5c84655f894ab4e7d5497b5856d, type: 3}
