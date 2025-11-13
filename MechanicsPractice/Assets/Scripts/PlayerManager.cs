@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 
     public static int playerHealth = 100; //value to track player HP
 
+    public bool Shielded = false;
+
     private void Awake()
     {
         instance = this; //assigning the instance to itself    
@@ -30,8 +32,20 @@ public class PlayerManager : MonoBehaviour
         switch (valKey)
         {
             case 0:
-                Debug.Log("Player took " + amp + " damage!");
-                playerHealth -= amp;
+                if (gameObject.GetComponentInChildren<AbilityHolder>().active == true)
+                {
+                    Shielded = true;
+                }
+                if (Shielded == false)
+                {
+                    Debug.Log("Player took " + amp + " damage!");
+                    playerHealth -= amp;
+                }
+                else
+                {
+                    Debug.Log("Player is shielded");
+                    Shielded = false;
+                }
                 break;
             default:
                 Debug.Log("[-] Attempted to change improper value!");

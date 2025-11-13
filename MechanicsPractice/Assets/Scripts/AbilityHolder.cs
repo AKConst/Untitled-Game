@@ -1,3 +1,4 @@
+using System.Data.SqlTypes;
 using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
@@ -14,7 +15,7 @@ public class AbilityHolder : MonoBehaviour
     }
     AbilityState state = AbilityState.ready; //At start we set it as ready
     public KeyCode key; //Key that needs to be pressed for ability to be activated
-
+    public bool active = false;
     void Update()
     {
         switch (state) //What follows depends on which state the machine is in
@@ -25,6 +26,7 @@ public class AbilityHolder : MonoBehaviour
                     ability.Activate(gameObject); //Run ability
                     state = AbilityState.active;
                     activeTime = ability.activeTime;
+                    active = true;
                 }
             break;
             case AbilityState.cooldown:
@@ -46,6 +48,7 @@ public class AbilityHolder : MonoBehaviour
                 {
                     state = AbilityState.cooldown;
                     cooldownTime = ability.cooldownTime;
+                    active = false;
                 }
             break;
         }
