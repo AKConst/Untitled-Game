@@ -18,8 +18,7 @@ public class ShieldAbility : Ability
 
     private IEnumerator deleteIndicator(ParticleSystem ind)
     {
-        //wait for 1 second before deleting the shield
-        yield return new WaitForSeconds(1f); //1
+        yield return new WaitForSeconds(activeTime); 
         Destroy(ind);
     }
 }
