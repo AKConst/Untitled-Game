@@ -1,50 +1,65 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    [SerializeField] private GameObject gameManagerObj; //reference to our game manager object
+    private UIDocument doc;
+    private Button resumeBtn, settingsBtn, mainMenuBtn, quitBtn;
 
-    [SerializeField] private Button[] buttons; //list of buttons to configure their clicking behavior
-
-    private void Start()
+    private void Awake()
     {
-        //iterating over all buttons
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            //checking the current button index
-            //based on its index, we assing an on click listener that then delegaes its functionality to the 
-            //appropriate function
-            switch (i)
-            {
-                case 0:
-                    buttons[i].onClick.AddListener(delegate { onSaveClicked(); });
-                    break;
-                case 1:
-                    buttons[i].onClick.AddListener(delegate { onLoadClicked(); });
-                    break;
-                case 2:
-                    buttons[i].onClick.AddListener(delegate { onQuitClicked(); });
-                    break;
-            }
-        }
+        doc = GetComponent<UIDocument>();
+
+        resumeBtn = doc.rootVisualElement.Q<Button>("ResumeBtn");
+        settingsBtn = doc.rootVisualElement.Q<Button>("SettingsBtn");
+        mainMenuBtn = doc.rootVisualElement.Q<Button>("MainMenuBtn");
+        quitBtn = doc.rootVisualElement.Q<Button>("QuitBtn");
+
+        resumeBtn.RegisterCallback<ClickEvent>(resumeGame);
+        settingsBtn.RegisterCallback<ClickEvent>(enterSettings);
+        mainMenuBtn.RegisterCallback<ClickEvent>(enterMainMenu);
+        quitBtn.RegisterCallback<ClickEvent>(quitGame);
     }
 
-    private void onSaveClicked()
+
+    private void OnEnable()
     {
-        //we save the game
-        SaveDataScript.instance.SaveGame();
+        resumeBtn = doc.rootVisualElement.Q<Button>("ResumeBtn");
+        settingsBtn = doc.rootVisualElement.Q<Button>("SettingsBtn");
+        mainMenuBtn = doc.rootVisualElement.Q<Button>("MainMenuBtn");
+        quitBtn = doc.rootVisualElement.Q<Button>("QuitBtn");
+
+        resumeBtn.RegisterCallback<ClickEvent>(resumeGame);
+        settingsBtn.RegisterCallback<ClickEvent>(enterSettings);
+        mainMenuBtn.RegisterCallback<ClickEvent>(enterMainMenu);
+        quitBtn.RegisterCallback<ClickEvent>(quitGame);
     }
 
-    private void onLoadClicked()
+    private void resumeGame(ClickEvent evt)
     {
-        //we load the game
-        SaveDataScript.instance.LoadGame();
+        //we unpause the game
+        Debug.Log("Resume game!");
+        GameManagerScript.instance.UnpauseGameFunc();
     }
 
-    private void onQuitClicked()
+    private void enterSettings(ClickEvent evt)
+    {
+        Debug.Log("Enter Settings!");
+    }
+
+    private void enterMainMenu(ClickEvent evt)
+    {
+        //we load into the main menu
+        Debug.Log("Go to main menu!");
+        GameManagerScript.instance.UnpauseGameFunc();
+        SceneManager.LoadScene(3);
+    }
+
+    private void quitGame(ClickEvent evt)
     {
         //we quit the game
-        Application.Quit(); 
+        Debug.Log("Quit Game!");
+        Application.Quit();
     }
 }

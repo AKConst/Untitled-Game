@@ -878,13 +878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9487ad879462044af851e0a2ce3d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   items:
   - {fileID: 3926953612507847375}
   - {fileID: 8079769466814045023}

@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/uss/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=8c03c677d25a1b049b4182bebd4be599&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/outer-wilds-4k.png?fileID=2800000&amp;guid=406d01275973cba4b840adb506bd5c88&amp;type=3#outer-wilds-4k&quot;);">
+        <ui:Label text="GODZONE" name="GameTitle" class="MainMenuLabel" style="background-color: rgba(255, 0, 0, 0); top: 218px;" />
+        <ui:Button text="START" name="StartGameBtn" class="button" style="color: rgb(255, 255, 255); width: auto;" />
+        <ui:Button text="SETTINGS" name="SettingsBtn" class="button" style="color: rgb(255, 255, 255); width: auto;" />
+        <ui:Button text="QUIT" name="QuitGameBtn" class="button" style="color: rgb(255, 255, 255); width: auto;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,34 @@
+:root {
+}
+
+.MainMenuLabel {
+    color: rgb(255, 255, 255);
+    font-size: 135px;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    top: 248px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.button {
+    top: 292px;
+    font-size: 74px;
+    width: 324px;
+    align-items: auto;
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 20px;
+    transition-duration: 0.15s;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.button:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.button:active {
+    background-color: rgb(91, 255, 0);
+}

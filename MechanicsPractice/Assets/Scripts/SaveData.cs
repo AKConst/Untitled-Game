@@ -4,6 +4,6 @@ using UnityEngine;
 public class SaveData
 {
     //model for the save data that we will store
-    public itemSO[] itemList;
+    public Ability[] abilityList;
     public int playerHP;
 }

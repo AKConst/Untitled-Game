@@ -3,7 +3,7 @@ using UnityEngine;
 public class IngameItemScript : MonoBehaviour
 {
     //references to the item that the in-game item pickup stores as well as its interact indicator
-    [SerializeField] private itemSO itemS;
+    [SerializeField] private Ability abilityS;
     [SerializeField] private SpriteRenderer indicator;
 
     //boolean for keeping track of interactable status
@@ -16,7 +16,7 @@ public class IngameItemScript : MonoBehaviour
         {
             Debug.Log("Add item to inventory!");
             //we run the add item function from the inventory script, and pass the item this object holds to it
-            InventoryScript.instance.AddItem(itemS);
+            InventoryScript.instance.AddItem(abilityS);
             //the item destroys its in-game representation
             Destroy(gameObject);
         }

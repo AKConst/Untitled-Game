@@ -2,41 +2,41 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript instance; //reference to itself
+    public static bool gameIsPaused = false; //boolean for pausing game
 
-    public bool gameIsPaused = false; //boolean for pausing game
+    //references to the main game UI and the pause menu UI (settings menu will probably have to be added in the future)
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private GameObject pauseMenuUI;
 
-    [SerializeField] private Animator sceneChangeAnim; //reference to scene change animation
+    //reference to all the scripts that need to be enabled/disabled when pausing the game
+    [SerializeField] private MonoBehaviour[] scriptsToPause; 
 
     private void Awake()
     {
-        //if the instance is null, we set it to itself and add it onto the list of 'DontDestroyOnLoad' objects
-        //which prevents this object from being destroyed when switching to a new scene
+        //if the instance is null, we set it to itself
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            //if not null, we destroy the object, this ensures one copy per scene
-            Destroy(gameObject); 
         }
     }
 
     private void Update()
     {
-        //checking if the game is paused, if so, we set the timescale to 0 and 1 as appropriate
-        if (gameIsPaused)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            Time.timeScale = 0.0f;
-        }
-        else
-        {
-            Time.timeScale = 1.0f;
+            if (GameManagerScript.gameIsPaused)
+            {
+                GameManagerScript.instance.UnpauseGameFunc();
+            }
+            else
+            {
+                GameManagerScript.instance.PauseGameFunc();
+            }
         }
 
         //This is here to test game save mechanics, you can use the keyboard inputs here if you want to
@@ -50,27 +50,41 @@ public class GameManagerScript : MonoBehaviour
         {
             Debug.Log("Loaded Game!");
             SaveDataScript.instance.LoadGame();
-            InventoryScript.instance.InitializeInventory();
         }
         // ----------
+    }
+
+    public void PauseGameFunc()
+    {
+        Debug.Log("Pausing Game!");
+
+        gameIsPaused = true;
+        inventoryUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0.0f;
+        foreach (MonoBehaviour script in scriptsToPause)
+        {
+            script.enabled = false;
+        }
+    }
+    public void UnpauseGameFunc()
+    {
+        Debug.Log("Unpausing Game!");
+
+        gameIsPaused = false;
+        inventoryUI.SetActive(true);
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1.0f;
+        foreach (MonoBehaviour script in scriptsToPause)
+        {
+            script.enabled = true;
+        }
     }
 
     //function that takes a scene index number as its perameter, then changes the scene to it
     public void ChangeLevel(int sceneNum)
     {
-        StartCoroutine(ChangeLevelE(sceneNum));
-    }
-
-    //The actual coroutine function that changes the scene by playing an animation, waiting for it to finish
-    //then switching over  to the next scene before playing the load-out animation
-    private IEnumerator ChangeLevelE(int sceneNum)
-    {
-        sceneChangeAnim.SetTrigger("startLoad");
-        yield return new WaitForSeconds(0.5f);
-
         SceneManager.LoadSceneAsync(sceneNum);
-
-        sceneChangeAnim.SetTrigger("endLoad");
     }
 
     public void QuitGame()

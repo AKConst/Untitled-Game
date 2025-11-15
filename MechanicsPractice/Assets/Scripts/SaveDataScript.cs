@@ -2,9 +2,11 @@ using System.IO;
 using UnityEngine;
 
 public class SaveDataScript : MonoBehaviour
-{
+{ 
     public static SaveDataScript instance; //instance to itself, static so its the only one belonging to this class
     public string saveLocation; //location where the save data will be located
+
+    [SerializeField] private MonoBehaviour MainInteractableScript;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class SaveDataScript : MonoBehaviour
         //creating our save data instance and assigning it the appropriate values
         SaveData saveData = new SaveData
         {
-            itemList = InventoryScript.rItems,
+            abilityList = AbilityHolder.instance.allAbilities,
             playerHP = PlayerManager.playerHealth
         };
         //writing the data of the save data instance to a json file
@@ -36,8 +38,7 @@ public class SaveDataScript : MonoBehaviour
             //if it does exist, we read the save data into a new instance of save data class
             //then we read from that object and assign the values to the appropriate variables in the game
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
-            InventoryScript.rItems = saveData.itemList;
-            InventoryScript.instance.InitializeInventory();
+            AbilityHolder.instance.allAbilities = saveData.abilityList;
 
             PlayerManager.playerHealth = saveData.playerHP;
             Debug.Log("Assigned player health " + saveData.playerHP);
