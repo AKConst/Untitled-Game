@@ -33,19 +33,4 @@ public class FinalSlash : MonoBehaviour
             other.gameObject.GetComponent<EnemyGeneric>().checkEnemyStatus();
         }
     }
-
-    //function to initiate the follow coroutine. This function is called when attacking from the PlayerAttack script.
-    public void initiateFollow(Vector2 dir, float dist, float cd)
-    {
-        StartCoroutine(attackFollow(GetComponent<Rigidbody2D>(), dir, dist, cd));
-    }
-
-    //coroutine to make the attack follow the player as well
-    public IEnumerator attackFollow(Rigidbody2D rb, Vector2 fdir, float fdist, float cooldown)
-    {
-        rb.linearVelocity = fdir * fdist;
-        yield return new WaitForSeconds(cooldown);
-
-        rb.linearVelocity = new Vector2(0, 0);
-    }
 }

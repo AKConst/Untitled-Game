@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/*
 public class StringTimer : MonoBehaviour
 {
     [SerializeField] private float endStringTime; //how long will the timer last
@@ -28,3 +29,4 @@ public class StringTimer : MonoBehaviour
         endStringTimeLive = endStringTime;
     }
 }
+*/

@@ -13,13 +13,16 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] public bool isAttacking = false;
     [SerializeField] private GameObject AttackCircle;
     [SerializeField] private GameObject FinalSlash;
+    [SerializeField] private float setCooldown = 1;
+    [SerializeField] private float setPurpleCooldown = 5;
+    private bool isPurpleAttack = false;
+    private float cooldown = 0;
+    private float purpleCooldown = 0;
     private Animator animator; //animator is needed to do attack animation  
-    private int PSC = 0; //player string counter
-    [SerializeField] private MonoBehaviour stringTimer; //reference for our timer
 
     private void Start()
     {
-        animator = GetComponentInParent<Animator>();        
+        animator = GetComponentInParent<Animator>();
     }
     void Update()
     {
@@ -31,71 +34,97 @@ public class PlayerAttack : MonoBehaviour
         float roZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, roZ);
 
-        //check if the player pressed mouse1
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!isAttacking)
         {
-            //initating the attack by setting the proper animator peramaters, increasing the PSC and starting our timer.
-            animator.SetFloat("MouseX", rotation.x);
-            animator.SetFloat("MouseY", rotation.y);
-            animator.SetBool("Attack", true);
-            animator.SetInteger("StringVal", PSC);
-            PSC++;
-            stringTimer.enabled = true;
-            stringTimer.GetComponent<StringTimer>().resetTimer();
+            //check if the player pressed on both mouse buttons
+            //if (Input.GetMouseButton(0) && Input.GetMouseButton(1))
 
-            //if so, we instantiate the attack indicator sprite, we then start a coroutine to delete it after
-            //an appropriate amount of time
-            isAttacking = true;
-            if (PSC < 3)
+           
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                //initating the attack by setting the proper animator peramaters, set stringval to 0 so it does firstAttack
+                animator.SetFloat("MouseX", rotation.x);
+                animator.SetFloat("MouseY", rotation.y);
+                animator.SetBool("Attack", true);
+                animator.SetInteger("StringVal", 0);
+
+
+
+                //if so, we instantiate the attack indicator sprite, we then start a coroutine to delete it after
+                //an appropriate amount of time
+                isAttacking = true;
+
                 GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.Euler(new Vector3(0, 0, roZ - 90)));
                 Attack.GetComponent<Animator>().SetBool("RAttack", true);
                 StartCoroutine(deleteIndicator(Attack));
-            }
-            else
-            {
-                AttackDash(rotation.normalized, 30);
-                GameObject FinalAttack = Instantiate(FinalSlash, attackPos.position, Quaternion.Euler(new Vector3(0, 0, roZ - 90)));
-                // running a function for the final attack to follow along with the player
-                FinalAttack.GetComponent<FinalSlash>().initiateFollow(rotation.normalized, 30, 0.20f);
-                StartCoroutine(deleteIndicator(FinalAttack));
-                PSC = 0;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            //initating the attack by setting the proper animator peramaters, increasing the PSC and starting our timer.
-            animator.SetFloat("MouseX", rotation.x);
-            animator.SetFloat("MouseY", rotation.y);
-            animator.SetBool("Attack", true);
-            animator.SetInteger("StringVal", PSC);
-            PSC++;
-            stringTimer.enabled = true;
-            stringTimer.GetComponent<StringTimer>().resetTimer();
 
-            isAttacking = true;
-            if (PSC < 3)
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse1))
             {
+                //initating the attack by setting the proper animator peramaters, increasing the PSC and starting our timer.
+                animator.SetFloat("MouseX", rotation.x);
+                animator.SetFloat("MouseY", rotation.y);
+                animator.SetBool("Attack", true);
+                animator.SetInteger("StringVal", 1);
+
+                isAttacking = true;
+
+
                 GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.Euler(new Vector3(0, 0, roZ - 90)));
                 Attack.GetComponent<Animator>().SetBool("BAttack", true);
                 Attack.GetComponent<SpriteRenderer>().flipX = true;
                 StartCoroutine(deleteIndicator(Attack));
             }
-            else
-            {
-                AttackDash(rotation.normalized, 30);
-                GameObject FinalAttack = Instantiate(FinalSlash, attackPos.position, Quaternion.Euler(new Vector3(0, 0, roZ - 90)));
-                // running a function for the final attack to follow along with the player
-                FinalAttack.GetComponent<FinalSlash>().initiateFollow(rotation.normalized, 30, 0.20f);
-                StartCoroutine(deleteIndicator(FinalAttack));
-                PSC = 0;
-            }
+
+             
+            cooldown = setCooldown; 
         }
         else
         {
             animator.SetBool("Attack", false);
+            cooldown -= Time.deltaTime;
+            if (cooldown < 0)
+            {
+                isAttacking = false;
+            }
         }
-        isAttacking = false;
+
+        if (!isPurpleAttack)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //initating the attack by setting the proper animator peramaters, set stringval to 2 so it does finalAttack
+                animator.SetFloat("MouseX", rotation.x);
+                animator.SetFloat("MouseY", rotation.y);
+                animator.SetBool("Purple_Attack", true);
+                animator.SetInteger("StringVal", 2);
+
+
+
+                //if so, we instantiate the attack indicator sprite, we then start a coroutine to delete it after
+                //an appropriate amount of time
+                isPurpleAttack = true;
+
+
+                GameObject FinalAttack = Instantiate(FinalSlash, attackPos.position, Quaternion.Euler(new Vector3(0, 0, roZ - 90)));
+                // running a function for the final attack to follow along with the player
+                FinalAttack.GetComponent<FinalSlash>();
+                StartCoroutine(deleteIndicator(FinalAttack));
+            }
+            
+            purpleCooldown = setPurpleCooldown;
+        }
+        else
+        {
+            animator.SetBool("Purple_Attack", false);
+            purpleCooldown -= Time.deltaTime;
+            if (purpleCooldown < 0)
+            {
+                isPurpleAttack = false;
+            }
+        }
+
     }
 
     private IEnumerator deleteIndicator(GameObject ind)
@@ -105,7 +134,7 @@ public class PlayerAttack : MonoBehaviour
         Destroy(ind);
     }
 
-    //getters and setters for the PSC
+    /*
     public void SetPSC(int val)
     {
         this.PSC = val;
@@ -114,10 +143,8 @@ public class PlayerAttack : MonoBehaviour
     {
         return this.PSC;
     }
+    */
 
     //function to dash on the last attack of the combo. Called from the player movement script
-    private void AttackDash(Vector2 dir, int dist)
-    {
-        StartCoroutine(GetComponentInParent<PlayerMovement>().Dash(dir, dist));
-    }
+    
 }
