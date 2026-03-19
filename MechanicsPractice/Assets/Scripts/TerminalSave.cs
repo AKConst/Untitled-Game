@@ -16,6 +16,7 @@ public class TerminalSave : MonoBehaviour
     {
         menuRoot = checkpointMenuDocument.rootVisualElement;
         menuRoot.style.display = DisplayStyle.None;
+ 
     }
     void Update()
     {

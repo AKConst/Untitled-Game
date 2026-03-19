@@ -28978,6 +28978,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae732c8607269943aca4d7fea92f44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1720223747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 377100563262600493, guid: 9a0ccf6e322a46a438f5e6b54f6ad009, type: 3}
+  m_PrefabInstance: {fileID: 4219334943311723931}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1728058044
 GameObject:
   m_ObjectHideFlags: 0
@@ -127908,7 +127919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2046120622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128178,7 +128189,7 @@ PrefabInstance:
     - target: {fileID: 2355730700905430312, guid: 3a2163578973baa489bf5f5eb41083fa, type: 3}
       propertyPath: guiDisplay
       value: 
-      objectReference: {fileID: 1870166963}
+      objectReference: {fileID: 1720223747}
     - target: {fileID: 2355730700905430312, guid: 3a2163578973baa489bf5f5eb41083fa, type: 3}
       propertyPath: 'flaskSprites.Array.data[0]'
       value: 
