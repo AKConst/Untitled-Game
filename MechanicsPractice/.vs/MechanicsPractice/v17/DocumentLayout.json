@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|c:\\users\\mkuno\\desktop\\untitledgame\\untitled-game\\mechanicspractice\\assets\\scripts\\ingameitemscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|c:\\users\\mkuno\\desktop\\untitledgame\\untitled-game\\mechanicspractice\\assets\\scripts\\terminalsave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\terminalsave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|c:\\users\\mkuno\\desktop\\untitledgame\\untitled-game\\mechanicspractice\\assets\\scripts\\playerscripts\\abilityholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\abilityholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\playerscripts\\abilities\\collisiondetectionshield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\abilities\\collisiondetectionshield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C24143E8-599B-FEDD-9AD9-7F565A332EE2}|AstarPathfindingProjectEditor.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\astarpathfindingproject\\editor\\astarupdatechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C24143E8-599B-FEDD-9AD9-7F565A332EE2}|AstarPathfindingProjectEditor.csproj|solutionrelative:assets\\astarpathfindingproject\\editor\\astarupdatechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\ingameitemscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ingameitemscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C24143E8-599B-FEDD-9AD9-7F565A332EE2}|AstarPathfindingProjectEditor.csproj|c:\\users\\mkuno\\desktop\\untitledgame\\untitled-game\\mechanicspractice\\assets\\astarpathfindingproject\\editor\\astarupdatechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C24143E8-599B-FEDD-9AD9-7F565A332EE2}|AstarPathfindingProjectEditor.csproj|solutionrelative:assets\\astarpathfindingproject\\editor\\astarupdatechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\playerscripts\\abilities\\shieldability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\abilities\\shieldability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\playerscripts\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,14 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\stringtimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\stringtimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\assets\\scripts\\playerscripts\\abilityholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3C38D40-9B97-D72A-B16D-DADE1CE36DED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\abilityholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,6 +55,43 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TerminalSave.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\TerminalSave.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TerminalSave.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\TerminalSave.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TerminalSave.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T18:59:23.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CollisionDetectionShield.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\Abilities\\CollisionDetectionShield.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\Abilities\\CollisionDetectionShield.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\Abilities\\CollisionDetectionShield.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerScripts\\Abilities\\CollisionDetectionShield.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T17:27:57.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ShieldAbility.cs",
+              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\Abilities\\ShieldAbility.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\Abilities\\ShieldAbility.cs",
+              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\Abilities\\ShieldAbility.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerScripts\\Abilities\\ShieldAbility.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T17:21:56.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "IngameItemScript.cs",
               "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\IngameItemScript.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\IngameItemScript.cs",
@@ -54,12 +99,11 @@
               "RelativeToolTip": "Assets\\Scripts\\IngameItemScript.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwBIAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T17:50:42.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T17:50:42.639Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AstarUpdateChecker.cs",
               "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\AstarPathfindingProject\\Editor\\AstarUpdateChecker.cs",
               "RelativeDocumentMoniker": "Assets\\AstarPathfindingProject\\Editor\\AstarUpdateChecker.cs",
@@ -67,24 +111,11 @@
               "RelativeToolTip": "Assets\\AstarPathfindingProject\\Editor\\AstarUpdateChecker.cs",
               "ViewState": "AgIAANIAAAAAAAAAAAAAwN8AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T17:50:28.182Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T17:50:28.182Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "StringTimer.cs",
-              "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\StringTimer.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\StringTimer.cs",
-              "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\StringTimer.cs",
-              "RelativeToolTip": "Assets\\Scripts\\StringTimer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T15:57:05.811Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
@@ -96,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "PlayerManager.cs",
               "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\PlayerManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\PlayerManager.cs",
@@ -108,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "PlayerAttack.cs",
               "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\PlayerAttack.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\PlayerAttack.cs",
@@ -120,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "FinalSlash.cs",
               "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\FinalSlash.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\FinalSlash.cs",
@@ -132,15 +163,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "AbilityHolder.cs",
               "DocumentMoniker": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\AbilityHolder.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\AbilityHolder.cs",
               "ToolTip": "C:\\Users\\mkuno\\Desktop\\UntitledGame\\Untitled-Game\\MechanicsPractice\\Assets\\Scripts\\PlayerScripts\\AbilityHolder.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerScripts\\AbilityHolder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T15:54:00.765Z"
+              "WhenOpened": "2026-03-17T15:54:00.765Z",
+              "EditorCaption": ""
             }
           ]
         }

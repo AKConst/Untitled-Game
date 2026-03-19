@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/CheckpointUIStyle.uss?fileID=7433441132597879392&amp;guid=74e9953c7d834624d911b908faf5d3de&amp;type=3#CheckpointUIStyle" />
+    <ui:VisualElement style="flex-grow: 1; align-items: auto; align-content: center;">
+        <ui:Label text="Game Saved" name="Label" class="header" />
+        <ui:VisualElement style="flex-grow: initial; align-content: flex-start; align-items: flex-start; width: 60%; flex-direction: row; justify-content: flex-start; align-self: center; flex-shrink: initial; height: 20%;">
+            <ui:Button text="Log" name="Log" selectable="false" class="button" style="height: 59px;" />
+            <ui:Button text="Inventory" name="Inventory" class="button" style="height: 57px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

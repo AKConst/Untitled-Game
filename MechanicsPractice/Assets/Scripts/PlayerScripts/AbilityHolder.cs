@@ -40,8 +40,8 @@ public class AbilityHolder : MonoBehaviour
 
     void Update()
     {
-        //cycle the ability list if player presses 'E'
-        if (Input.GetKeyDown(KeyCode.E))
+        //cycle the ability list if player presses 'X'
+        if (Input.GetKeyDown(KeyCode.X))
         {
             //checking if the index is out of range, resetting if so.
             if (abilityIndex == 9) abilityIndex = 0;

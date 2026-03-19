@@ -10,10 +10,9 @@ public class ShieldAbility : Ability
     {
         ParticleSystem shield = Instantiate(shieldParticle, parent.transform.position, Quaternion.identity, parent.transform);
         MonoBehaviour parentMonoBehaviour = parent.GetComponent<MonoBehaviour>();
-        if (parentMonoBehaviour != null)
-        {
-            parentMonoBehaviour.StartCoroutine(deleteIndicator(shield));
-        }
+        
+        parentMonoBehaviour.StartCoroutine(deleteIndicator(shield));
+        
     }
 
     private IEnumerator deleteIndicator(ParticleSystem ind)
