@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b81e7bbbcce6644aa4d5bcda6371b04, type: 3}
-  m_Name: Banana
+  m_Name: LVL1_cellNote
   m_EditorClassIdentifier: 
-  itemName: Banana
-  effectArea: ATK
-  itemSprite: {fileID: 3625043607559282579, guid: b6f43855cfaa16841bf095c8621e88d8, type: 3}
+  itemName: 6767
+  itemContent: I'm SUUUUCH a gassy fella BLUUURHHH!!!! Oh fuck.
+  itemSprite: {fileID: 0}

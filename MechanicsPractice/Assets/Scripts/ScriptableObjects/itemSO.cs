@@ -7,7 +7,7 @@ public class itemSO : ScriptableObject
 
     [Header("Basic Item Details")]
     public string itemName;
-    public string effectArea;
+    public string itemContent;
 
     [Header("Item Sprite Information")]
     public Sprite itemSprite;

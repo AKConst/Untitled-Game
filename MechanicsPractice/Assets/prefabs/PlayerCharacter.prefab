@@ -97,7 +97,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1818605564029253537}
   - component: {fileID: 9189491254213022121}
-  - component: {fileID: 8020385683060244031}
   m_Layer: 7
   m_Name: RotatePoint
   m_TagString: Player
@@ -143,20 +142,8 @@ MonoBehaviour:
   isAttacking: 0
   AttackCircle: {fileID: 4249168510230731092, guid: 80141e88cf6eda74484de5dff13435db, type: 3}
   FinalSlash: {fileID: 4249168510230731092, guid: 40b9875c0a1a41e4f978027b30707c26, type: 3}
-  stringTimer: {fileID: 8020385683060244031}
---- !u!114 &8020385683060244031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6225631654167966713}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3e328739242f104dbb5e8ac6241ae04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endStringTime: 1
+  setCooldown: 1
+  setPurpleCooldown: 5
 --- !u!1 &6614426981105518722
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452194b0da394cb42bac7b40c9226d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealAmt: 2
   Shielded: 0
+  guiDisplay: {fileID: 0}
 --- !u!95 &953246445153073975
 Animator:
   serializedVersion: 7
@@ -387,6 +376,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a392733db7d538749a0814c0f918b58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: ea94f9b337b7b9d4dacd9ae4ee026969, type: 2}
+  allAbilities:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   key: 113
   active: 0
