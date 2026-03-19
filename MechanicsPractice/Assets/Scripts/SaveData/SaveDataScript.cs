@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveDataScript : MonoBehaviour
 { 
@@ -23,7 +24,11 @@ public class SaveDataScript : MonoBehaviour
         SaveData saveData = new SaveData
         {
             abilityList = AbilityHolder.instance.allAbilities,
-            playerHP = PlayerManager.playerHealth
+            playerHP = PlayerManager.playerHealth,
+            maxHeals = PlayerManager.maxHealAmt,
+            currHeals = PlayerManager.healAmt,
+            sceneNum = SceneManager.GetActiveScene().buildIndex,
+            scenePos = PlayerManager.playerPos
         };
         //writing the data of the save data instance to a json file
         File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
@@ -38,10 +43,11 @@ public class SaveDataScript : MonoBehaviour
             //if it does exist, we read the save data into a new instance of save data class
             //then we read from that object and assign the values to the appropriate variables in the game
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
-            AbilityHolder.instance.allAbilities = saveData.abilityList;
 
+            AbilityHolder.instance.allAbilities = saveData.abilityList;
             PlayerManager.playerHealth = saveData.playerHP;
-            Debug.Log("Assigned player health " + saveData.playerHP);
+            PlayerManager.maxHealAmt = saveData.maxHeals;
+            PlayerManager.healAmt = saveData.currHeals;
         }
         else
         {

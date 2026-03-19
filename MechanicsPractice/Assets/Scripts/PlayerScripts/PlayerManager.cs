@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,26 +8,54 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
 
     public static int playerHealth = 100; //value to track player HP
+    public static int maxHealAmt = 2;
+    public static int healAmt = 0;
+    public static Transform playerPos;
+    [SerializeField] private Sprite[] flaskSprites = new Sprite[3];
 
     public bool Shielded = false;
 
     [SerializeField] private UIDocument guiDisplay; //reference to our main GUI
 
-    private void Awake()
+    private void Start()
     {
         instance = this; //assigning the instance to 
+        playerPos = gameObject.transform;
+        healAmt = maxHealAmt;
 
         //set the HP bar to the proper value of the current player HP
         float HpVal = ((float)playerHealth / 100) * 325;
         guiDisplay.rootVisualElement.Q<VisualElement>("HPbar").style.maxHeight = HpVal;
+        guiDisplay.rootVisualElement.Q<Label>("hpField").text = healAmt.ToString();
     }
 
     private void Update()
     {
         //we heal the player when they use the healing ability.
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R)) 
         {
-            updatePlayerStatus(0, 25, true);
+            if (healAmt > 0)
+            {
+                updatePlayerStatus(0, 25, true);
+                healAmt -= 1;
+                if (healAmt == maxHealAmt)
+                {
+                    guiDisplay.rootVisualElement.Q<VisualElement>("HealingSprite").style.backgroundImage = new StyleBackground(flaskSprites[0]);
+                }
+                else if (healAmt <= maxHealAmt / 2 && healAmt > 0)
+                {
+                    guiDisplay.rootVisualElement.Q<VisualElement>("HealingSprite").style.backgroundImage = new StyleBackground(flaskSprites[1]);
+                }
+                else if (healAmt <= 0)
+                {
+                    guiDisplay.rootVisualElement.Q<VisualElement>("HealingSprite").style.backgroundImage = new StyleBackground(flaskSprites[2]);
+                }
+                guiDisplay.rootVisualElement.Q<Label>("hpField").text = healAmt.ToString();
+            }
+            else
+            {
+                Debug.Log("No healing items available!");
+            }
         }
     }
 
