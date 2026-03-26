@@ -1,10 +1,18 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/CheckpointUIStyle.uss?fileID=7433441132597879392&amp;guid=74e9953c7d834624d911b908faf5d3de&amp;type=3#CheckpointUIStyle" />
-    <ui:VisualElement style="flex-grow: 1; align-items: auto; align-content: center;">
+    <ui:VisualElement name="TraversalSection" style="flex-grow: 1; align-items: auto; align-content: center; max-height: 125px;">
         <ui:Label text="Game Saved" name="Label" class="header" />
-        <ui:VisualElement style="flex-grow: initial; align-content: flex-start; align-items: flex-start; width: 60%; flex-direction: row; justify-content: flex-start; align-self: center; flex-shrink: initial; height: 20%;">
+        <ui:VisualElement name="ButtonsContainer" style="flex-grow: initial; align-content: flex-start; align-items: flex-start; width: 60%; flex-direction: row; justify-content: flex-start; align-self: center; flex-shrink: initial; height: 20%; min-height: 117%;">
             <ui:Button text="Log" name="Log" selectable="false" class="button" style="height: 59px;" />
-            <ui:Button text="Inventory" name="Inventory" class="button" style="height: 57px;" />
+            <ui:Button text="Abilities" name="Abilities" class="button" style="height: 57px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="DisplaySection" style="flex-grow: 1;">
+            <ui:VisualElement name="ItemDisplay" style="flex-grow: 1; display: none;">
+                <ui:ListView name="ItemList" virtualization-method="DynamicHeight" fixed-item-height="52" style="align-self: center; align-items: center; min-height: 800px; min-width: 500px; color: rgb(0, 255, 14); font-size: 52px; -unity-font-style: bold; justify-content: center; align-content: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="AbilityDisplay" style="flex-grow: 1; display: none;">
+                <ui:ListView name="AbilityList" fixed-item-height="52" virtualization-method="DynamicHeight" horizontal-scrolling="true" style="align-items: center; justify-content: center; align-self: center; align-content: center; min-width: 1500px; min-height: 250px; color: rgb(255, 31, 0); font-size: 52px; -unity-font-style: bold;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

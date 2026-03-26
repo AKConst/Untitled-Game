@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 6161103726175589300}
   - component: {fileID: 2355730700905430312}
   - component: {fileID: 953246445153073975}
-  - component: {fileID: 5457349533633742942}
+  - component: {fileID: 5053841035378173912}
   m_Layer: 7
   m_Name: PlayerCharacter
   m_TagString: PlayerTag
@@ -339,7 +339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452194b0da394cb42bac7b40c9226d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealAmt: 2
+  flaskSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Shielded: 0
   guiDisplay: {fileID: 0}
 --- !u!95 &953246445153073975
@@ -364,7 +367,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5457349533633742942
+--- !u!114 &5053841035378173912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,15 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allAbilities:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ea94f9b337b7b9d4dacd9ae4ee026969, type: 2}
   key: 113
   active: 0

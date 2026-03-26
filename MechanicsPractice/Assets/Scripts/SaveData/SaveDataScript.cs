@@ -7,8 +7,6 @@ public class SaveDataScript : MonoBehaviour
     public static SaveDataScript instance; //instance to itself, static so its the only one belonging to this class
     public string saveLocation; //location where the save data will be located
 
-    [SerializeField] private MonoBehaviour MainInteractableScript;
-
     private void Awake()
     {
         instance = this; //assign the instance to the instance of the class
@@ -24,6 +22,8 @@ public class SaveDataScript : MonoBehaviour
         SaveData saveData = new SaveData
         {
             abilityList = AbilityHolder.instance.allAbilities,
+            currAbilityIndex = AbilityHolder.instance.GetCurrAbilityIndex(),
+            itemsList = ItemsHolder.instance.items,
             playerHP = PlayerManager.playerHealth,
             maxHeals = PlayerManager.maxHealAmt,
             currHeals = PlayerManager.healAmt,
@@ -45,6 +45,8 @@ public class SaveDataScript : MonoBehaviour
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
 
             AbilityHolder.instance.allAbilities = saveData.abilityList;
+            AbilityHolder.instance.SetCurrAbilityIndex(saveData.currAbilityIndex);
+            ItemsHolder.instance.items = saveData.itemsList;
             PlayerManager.playerHealth = saveData.playerHP;
             PlayerManager.maxHealAmt = saveData.maxHeals;
             PlayerManager.healAmt = saveData.currHeals;

@@ -10,7 +10,6 @@ public class GameManagerScript : MonoBehaviour
     public static bool gameIsPaused = false; //boolean for pausing game
 
     //references to the main game UI and the pause menu UI (settings menu will probably have to be added in the future)
-    [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject pauseMenuUI;
 
     //reference to all the scripts that need to be enabled/disabled when pausing the game
@@ -59,7 +58,6 @@ public class GameManagerScript : MonoBehaviour
         Debug.Log("Pausing Game!");
 
         gameIsPaused = true;
-        inventoryUI.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0.0f;
         foreach (MonoBehaviour script in scriptsToPause)
@@ -72,7 +70,6 @@ public class GameManagerScript : MonoBehaviour
         Debug.Log("Unpausing Game!");
 
         gameIsPaused = false;
-        inventoryUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1.0f;
         foreach (MonoBehaviour script in scriptsToPause)

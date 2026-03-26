@@ -1,10 +1,12 @@
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class TerminalSave : MonoBehaviour
 {
     [Header("UI Settings")]
-    public UIDocument checkpointMenuDocument; 
+    public UIDocument checkpointMenuDocument;
+    public GameObject InGameUI;
 
     public float Range = 3.0f;
     public LayerMask playerLayer;
@@ -12,11 +14,23 @@ public class TerminalSave : MonoBehaviour
     private bool playerInRange = true;
     private VisualElement menuRoot;
 
-    private void Start()
+    //UI Menu Handling
+    private Button ItemLogBtn, AbilityBtn;
+    private VisualElement itemDisplay, abilityDisplay;
+
+    private void Awake()
     {
         menuRoot = checkpointMenuDocument.rootVisualElement;
         menuRoot.style.display = DisplayStyle.None;
- 
+
+        ItemLogBtn = menuRoot.Q<Button>("Log");
+        ItemLogBtn.RegisterCallback<ClickEvent>(OpenLogs);
+
+        AbilityBtn = menuRoot.Q<Button>("Abilities");
+        AbilityBtn.RegisterCallback<ClickEvent>(OpenAbilities);
+
+        itemDisplay = menuRoot.Q<VisualElement>("ItemDisplay");
+        abilityDisplay = menuRoot.Q<VisualElement>("AbilityDisplay");
     }
     void Update()
     {
@@ -24,9 +38,10 @@ public class TerminalSave : MonoBehaviour
         {
             if (checkpointMenuDocument != null && menuRoot != null)
             {
+                InGameUI.SetActive(false);
                 menuRoot.style.display = DisplayStyle.Flex;
                 MenuOpen = true;
-                
+
                
                 Time.timeScale = 0f;
             }
@@ -34,6 +49,7 @@ public class TerminalSave : MonoBehaviour
 
         if(MenuOpen && Input.GetKeyDown(KeyCode.Escape))
         {
+            InGameUI.SetActive(true);
             menuRoot.style.display = DisplayStyle.None;
             MenuOpen = false;
 
@@ -48,5 +64,17 @@ public class TerminalSave : MonoBehaviour
             playerInRange = true;
             Debug.Log("Player entered");    
         }
+    }
+
+    public void OpenLogs(ClickEvent evt)
+    {
+        abilityDisplay.style.display = DisplayStyle.None;
+        itemDisplay.style.display = DisplayStyle.Flex;
+    }
+
+    public void OpenAbilities(ClickEvent evt)
+    {
+        itemDisplay.style.display = DisplayStyle.None;
+        abilityDisplay.style.display = DisplayStyle.Flex;
     }
 }

@@ -1,11 +1,13 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [System.Serializable] //serializable in order to allow us to break down and rebuild the instances of data of this type.
 public class SaveData
 {
     //model for the save data that we will store
-    public Ability[] abilityList; //list of abilities
-    public itemSO[] itemsList; //list of items
+    public List<Ability> abilityList; //list of abilities
+    public int currAbilityIndex; //index position of the currently equipped ability
+    public List<itemSO> itemsList; //list of items
     public int playerHP; //player HP
     public int maxHeals; //current maximum amount of heals
     public int currHeals; //currently held amount of heals
