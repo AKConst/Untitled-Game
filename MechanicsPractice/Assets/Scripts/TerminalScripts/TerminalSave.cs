@@ -16,7 +16,7 @@ public class TerminalSave : MonoBehaviour
 
     //UI Menu Handling
     private Button ItemLogBtn, AbilityBtn;
-    private VisualElement itemDisplay, abilityDisplay;
+    private VisualElement itemDisplay, abilityDisplay, itemContentDisplay;
 
     private void Awake()
     {
@@ -31,6 +31,7 @@ public class TerminalSave : MonoBehaviour
 
         itemDisplay = menuRoot.Q<VisualElement>("ItemDisplay");
         abilityDisplay = menuRoot.Q<VisualElement>("AbilityDisplay");
+        itemContentDisplay = menuRoot.Q<VisualElement>("ItemContentDisplay");
     }
     void Update()
     {
@@ -50,6 +51,10 @@ public class TerminalSave : MonoBehaviour
         if(MenuOpen && Input.GetKeyDown(KeyCode.Escape))
         {
             InGameUI.SetActive(true);
+            itemDisplay.style.display = DisplayStyle.None;
+            abilityDisplay.style.display = DisplayStyle.None;
+            itemContentDisplay.style.display = DisplayStyle.None;
+
             menuRoot.style.display = DisplayStyle.None;
             MenuOpen = false;
 
@@ -69,12 +74,14 @@ public class TerminalSave : MonoBehaviour
     public void OpenLogs(ClickEvent evt)
     {
         abilityDisplay.style.display = DisplayStyle.None;
+        itemContentDisplay.style.display = DisplayStyle.None;
         itemDisplay.style.display = DisplayStyle.Flex;
     }
 
     public void OpenAbilities(ClickEvent evt)
     {
         itemDisplay.style.display = DisplayStyle.None;
+        itemContentDisplay.style.display = DisplayStyle.None;
         abilityDisplay.style.display = DisplayStyle.Flex;
     }
 }

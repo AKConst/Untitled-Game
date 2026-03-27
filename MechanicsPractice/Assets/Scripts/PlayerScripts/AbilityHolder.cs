@@ -6,7 +6,7 @@ public class AbilityHolder : MonoBehaviour
     public static AbilityHolder instance; //instance used for referencing in other scripts
 
     public List<Ability> allAbilities = new List<Ability>(); //dynamic list of all equipped items
-    private int abilityIndex = 0; //current ability index
+    private int abilityIndex = 100; //current ability index
 
     private Ability ability; //currently active ability
     float cooldownTime; //ability cooldown time
@@ -29,7 +29,13 @@ public class AbilityHolder : MonoBehaviour
         {
             instance = this;
         }
-        ability = allAbilities[abilityIndex];
+        if (abilityIndex <= 7) {
+            ability = allAbilities[abilityIndex];
+        }
+        else
+        {
+            ability = null;
+        }
     }
 
     void Update()
@@ -82,6 +88,11 @@ public class AbilityHolder : MonoBehaviour
     {
         return ability;
     }
+    public void SetCurrentAbility()
+    {
+        ability = allAbilities[abilityIndex];
+    }
+
     public int GetCurrAbilityIndex()
     {
         return abilityIndex;

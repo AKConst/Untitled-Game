@@ -6,12 +6,19 @@
             <ui:Button text="Log" name="Log" selectable="false" class="button" style="height: 59px;" />
             <ui:Button text="Abilities" name="Abilities" class="button" style="height: 57px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="DisplaySection" style="flex-grow: 1;">
+        <ui:VisualElement name="DisplaySection" style="flex-grow: 1; position: absolute; width: 100%; height: 650%; top: 190px;">
             <ui:VisualElement name="ItemDisplay" style="flex-grow: 1; display: none;">
-                <ui:ListView name="ItemList" virtualization-method="DynamicHeight" fixed-item-height="52" style="align-self: center; align-items: center; min-height: 800px; min-width: 500px; color: rgb(0, 255, 14); font-size: 52px; -unity-font-style: bold; justify-content: center; align-content: center;" />
+                <ui:ListView name="ItemList" virtualization-method="DynamicHeight" fixed-item-height="52" style="align-self: center; align-items: center; min-height: 800px; min-width: 500px; color: rgb(0, 255, 14); font-size: 52px; -unity-font-style: bold; justify-content: center; align-content: center; margin-top: 45px;" />
             </ui:VisualElement>
             <ui:VisualElement name="AbilityDisplay" style="flex-grow: 1; display: none;">
-                <ui:ListView name="AbilityList" fixed-item-height="52" virtualization-method="DynamicHeight" horizontal-scrolling="true" style="align-items: center; justify-content: center; align-self: center; align-content: center; min-width: 1500px; min-height: 250px; color: rgb(255, 31, 0); font-size: 52px; -unity-font-style: bold;" />
+                <ui:ListView name="AbilityList" fixed-item-height="52" virtualization-method="DynamicHeight" horizontal-scrolling="true" style="align-items: center; justify-content: center; align-self: center; align-content: center; min-width: 1500px; min-height: 250px; color: rgb(255, 31, 0); font-size: 52px; -unity-font-style: bold; margin-top: 84px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemContentDisplay" style="flex-grow: 1; display: none;">
+                <ui:Label text="Item Name" name="itemNameDisplay" style="flex-wrap: nowrap; flex-direction: column; align-self: flex-start; left: 207px; font-size: 62px; top: 196px;" />
+                <ui:Button text="X" name="exitBtn" style="align-self: flex-start; left: 109px; top: 16px; font-size: 52px; -unity-font-style: bold; min-height: 63px;" />
+                <ui:VisualElement name="contentContainer" style="flex-grow: 1; position: absolute; width: 100%; height: 100px; top: 359px; margin-left: 0; margin-right: -364px; min-height: 300%; display: flex;">
+                    <ui:Label text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." name="itemContent" style="font-size: 32px; flex-wrap: nowrap; flex-direction: column; align-self: auto; text-overflow: clip; white-space: normal; margin-left: 275px; margin-right: 185px; margin-top: 0;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

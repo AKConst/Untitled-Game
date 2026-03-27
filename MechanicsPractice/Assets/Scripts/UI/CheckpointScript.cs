@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,15 @@ public class CheckpointScript : MonoBehaviour
     private const int abilitySize = 7;
     private List<string> abilityDis = new List<string>(abilitySize);
 
+    VisualElement itemDisplay, itemContentDisplay;
+
     private void Start()
     {
         menuRoot = document.rootVisualElement; //set up the menu root element for more convenient access when writing code
+        //assign values to our relevant containers
+        itemDisplay = menuRoot.Q<VisualElement>("ItemDisplay");
+        itemContentDisplay = menuRoot.Q<VisualElement>("ItemContentDisplay");
+        itemContentDisplay.style.display = DisplayStyle.None;
 
         //setup of functionality of the items section
         itemsListUI = menuRoot.Q<ListView>(); //initializing the value on waking
@@ -30,36 +37,80 @@ public class CheckpointScript : MonoBehaviour
         }
         itemsListUI.itemsSource = itemsDis; //assigning the value from our finalized list
 
-        itemsListUI.makeItem = () => new Label(); //lambda function assigned, will be automatically called by the listview when creating items
-        itemsListUI.bindItem = (elem, index) => ((Label)elem).text = itemsDis[index]; //binds each element to it's value
-        itemsListUI.selectionType = SelectionType.Single; //selection type, we allow only for single selection
-        //lambda function that will be called when an item is seleceted, will return the index of the selected
-        //item from the listview
-        itemsListUI.selectedIndicesChanged += (selectedIndices) => 
+        //lambda function assigned, will be automatically called by the listview when creating items
+        itemsListUI.makeItem = () =>
         {
-            Debug.Log("Index selected: " + string.Join(", ", selectedIndices));
+            Label nl = new Label();
+            nl.RegisterCallback<PointerDownEvent>(evt =>
+            {
+                int index = (int)nl.userData; //we take the index written to the metadata in our binding function
+                DisplayItemTerminal(index); //we call our item display function and pass it the index of the item clicked;
+            });
+
+            return nl;
         };
+        //binds each element to it's value
+        itemsListUI.bindItem = (elem, index) =>
+        {
+            Label item = (Label)elem;
+            item.text = itemsDis[index];
+            item.userData = index; //assign index to metadata
+        };
+        itemsListUI.selectionType = SelectionType.None; //selection type, we allow only for single selection
 
 
         //same thing we did with the items but for the list of abilities
         abilityListUI = menuRoot.Q<ListView>("AbilityList");
 
-        Debug.Log(AbilityHolder.instance);
         foreach(Ability ability in AbilityHolder.instance.allAbilities)
         {
             abilityDis.Add(ability.name);
-            Debug.Log(ability.name);
         }
         abilityListUI.itemsSource = abilityDis;
 
-        abilityListUI.makeItem = () => new Label();
-        abilityListUI.bindItem = (elem, index) => ((Label)elem).text = abilityDis[index];
-        abilityListUI.selectionType = SelectionType.Single;
-        abilityListUI.selectedIndicesChanged += (selectedIndices) =>
+        abilityListUI.makeItem = () =>
         {
-            Debug.Log("Assigned ability of index: " + selectedIndices);
-            int newIndex = int.Parse(selectedIndices.ToString()); //need to parse the selected index
-            AbilityHolder.instance.SetCurrAbilityIndex(newIndex); //assign the new active ability index
+            Label nl = new Label();
+            nl.RegisterCallback<PointerDownEvent>(evt =>
+            {
+                int index = (int)nl.userData;
+                AbilityHolder.instance.SetCurrAbilityIndex(index);
+                AbilityHolder.instance.SetCurrentAbility();
+            });
+
+            return nl;
         };
+        abilityListUI.bindItem = (elem, index) =>
+        {
+            Label ability = (Label)elem;
+            ability.text = abilityDis[index];
+            ability.userData = index;
+        };
+        abilityListUI.selectionType = SelectionType.None;
+    }
+
+    private void DisplayItemTerminal(int index)
+    {
+        itemDisplay.style.display = DisplayStyle.None;
+
+        Button exitBtn = itemContentDisplay.Q<Button>("exitBtn");
+        exitBtn.RegisterCallback<ClickEvent>(HideCurrItemDisplay);
+
+        if (itemContentDisplay.style.display == DisplayStyle.None)
+        {
+            itemContentDisplay.style.display = DisplayStyle.Flex;
+
+            Label itemNameDis = itemContentDisplay.Q<Label>("itemNameDisplay");
+            Label itemContentDis = itemContentDisplay.Q<Label>("itemContent");
+
+            itemNameDis.text = ItemsHolder.instance.items[index].name;
+            itemContentDis.text = ItemsHolder.instance.items[index].itemContent;
+        }
+    }
+
+    private void HideCurrItemDisplay(ClickEvent evt)
+    {
+        itemContentDisplay.style.display = DisplayStyle.None;
+        itemDisplay.style.display = DisplayStyle.Flex;
     }
 }
