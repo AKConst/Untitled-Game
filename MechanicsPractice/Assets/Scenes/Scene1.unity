@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 380931742}
   - component: {fileID: 380931741}
   - component: {fileID: 380931740}
-  - component: {fileID: 380931745}
   m_Layer: 0
   m_Name: LVL1_Walls
   m_TagString: Untagged
@@ -21903,7 +21902,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 91
-      m_TileSpriteIndex: 92
+      m_TileSpriteIndex: 101
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -22073,7 +22072,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 90
-      m_TileSpriteIndex: 90
+      m_TileSpriteIndex: 92
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -28366,12 +28365,12 @@ Tilemap:
     m_Data: {fileID: -1957743637, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: -229504400, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1313940151, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -1516583899, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -844871185, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
+    m_Data: {fileID: -1313940151, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: -1599719098, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
   - m_RefCount: 10
@@ -28388,8 +28387,8 @@ Tilemap:
     m_Data: {fileID: 906647138, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 1412117792, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -844871185, guid: 01352af2179807849ad7af92f67dd2a1, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1771
     m_Data:
@@ -28472,22 +28471,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &380931745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380931738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -28898,6 +28881,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: chaseScripts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: 'chaseScripts.Array.data[0]'
+      value: 
+      objectReference: {fileID: 978655378}
     - target: {fileID: 8760784778375647944, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
@@ -28927,12 +28918,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978655372}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2508269dff883714ea401dede5cce846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eSightRange: 150
   target: {fileID: 1655454424}
+  groundTiles: {fileID: 1728058047}
+  speed: 5
 --- !u!1 &1142194780
 GameObject:
   m_ObjectHideFlags: 0
@@ -28943,6 +28937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1142194782}
   - component: {fileID: 1142194781}
+  - component: {fileID: 1142194783}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -28979,6 +28974,22 @@ Transform:
   - {fileID: 380931739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1142194783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142194780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791ed78682d14d6459241dd32b13714d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundTiles: {fileID: 1728058047}
+  wallTiles: {fileID: 380931744}
+  playerPos: {fileID: 1655454424}
+  activeRange: 15
 --- !u!1 &1237736028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8649028346022332829, guid: 9a0ccf6e322a46a438f5e6b54f6ad009, type: 3}
@@ -29022,7 +29033,6 @@ GameObject:
   - component: {fileID: 1728058045}
   - component: {fileID: 1728058047}
   - component: {fileID: 1728058046}
-  - component: {fileID: 1728058048}
   m_Layer: 0
   m_Name: LVL1_Ground
   m_TagString: Untagged
@@ -127821,22 +127831,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1728058048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728058044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 0
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &1906636069 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 903305299944237343, guid: 9be4a0e1ed9facb4a94bc1dfa8c3c4f2, type: 3}
