@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class EnemyPathfindingGeneric : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class EnemyPathfindingGeneric : MonoBehaviour
         if (Mathf.Clamp(targetPos.x, currPos.x-eSightRange, currPos.x+eSightRange) == targetPos.x && Mathf.Clamp(targetPos.y, currPos.y-eSightRange, currPos.y+eSightRange) == targetPos.y)
         {
             if (TileGridData.instance.HasLOS(currPos, targetPos))
-            { 
+            {
                 hasLOS = true;
             }
             else
@@ -50,23 +51,29 @@ public class EnemyPathfindingGeneric : MonoBehaviour
     }
 
     private Vector3Int findActiveTile()
-    {
-        for (int x = -eSightRange; x < eSightRange; x++)
+    {   
+        Dictionary<Vector3Int, TileInfo> tiles = TileGridData.instance.tiles;
+        Vector3Int closestActiveTile = new();
+
+        foreach (Vector3Int pos in tiles.Keys)
         {
-            for (int y = -eSightRange; y < eSightRange; y++)
+            int currDist = -2;
+            int currMaxDist = 50;
+
+            if (Mathf.Clamp(pos.x, transform.position.x - eSightRange, transform.position.x + eSightRange) == pos.x &&
+                    Mathf.Clamp(pos.y, transform.position.y - eSightRange, transform.position.y + eSightRange) == pos.y &&
+                        tiles[pos].isActive)
             {
-                Vector3Int cPos = currPos + new Vector3Int(x, y, 0);
-
-                if (!TileGridData.instance.tiles.TryGetValue(cPos, out _)) continue;
-
-                if (TileGridData.instance.tiles[cPos].isActive)
+                currDist = TileGridData.instance.gridDistance(groundTiles.WorldToCell(transform.position), pos);
+                if(currDist < currMaxDist)
                 {
-                    return cPos;
+                    currMaxDist = currDist;
+                    closestActiveTile = pos;
                 }
             }
         }
 
-        return currPos;
+        return closestActiveTile;
     }
 
     private void moveTowards(Vector3 from, Vector3 to, float speed)

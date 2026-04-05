@@ -28843,11 +28843,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2674193106553783683, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6217895
+      value: -1.85
       objectReference: {fileID: 0}
     - target: {fileID: 2674193106553783683, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.51387
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: 2674193106553783683, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28880,6 +28880,14 @@ PrefabInstance:
     - target: {fileID: 2674193106553783683, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: DetectRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: LeavePlayerRange
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: chaseScripts.Array.size
@@ -28989,7 +28997,7 @@ MonoBehaviour:
   groundTiles: {fileID: 1728058047}
   wallTiles: {fileID: 380931744}
   playerPos: {fileID: 1655454424}
-  activeRange: 15
+  activeRange: 5
 --- !u!1 &1237736028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8649028346022332829, guid: 9a0ccf6e322a46a438f5e6b54f6ad009, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -60,25 +61,37 @@ public class TileGridData : MonoBehaviour
     public void UpdateActiveTiles()
     {
         Vector3Int pPos = groundTiles.WorldToCell(playerPos.position);
-        //Vector3Int pPos = new Vector3Int(Mathf.FloorToInt(playerPos.position.x), Mathf.FloorToInt(playerPos.position.y), Mathf.FloorToInt(playerPos.position.z));
 
-        for (int x = -activeRange; x <= activeRange; x++)
+        foreach (Vector3Int pos in tiles.Keys)
         {
-            for(int y = -activeRange; y <= activeRange; y++)
+            if (Mathf.Clamp(pos.x, playerPos.position.x - activeRange, playerPos.position.x + activeRange) != pos.x ||
+                    Mathf.Clamp(pos.y, playerPos.position.y - activeRange, playerPos.position.y + activeRange) != pos.y)
             {
-                Vector3Int currTilePos = pPos + new Vector3Int(x, y, 0);
-
-                if (x * x + y * y < activeRange * activeRange) continue;
-                if (!tiles.ContainsKey(currTilePos)) continue;
-
-                if (HasLOS(pPos, currTilePos))
+                tiles[pos].isActive = false;
+            }
+            else
+            {
+                if (HasLOS(pPos, pos))
                 {
-                    TileInfo currTile = tiles[currTilePos];
-                    currTile.isActive = true;
+                    tiles[pos].isActive = true;
                 }
             }
         }
     }
+
+    
+    private void OnDrawGizmos()
+    {
+        foreach(var tile in tiles.Keys)
+        {
+            if (tiles[tile].isActive)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawSphere(tile, 0.35f);
+            }
+        }
+    }
+    
 
     public bool HasLOS(Vector3Int from, Vector3Int to)
     {
@@ -91,6 +104,19 @@ public class TileGridData : MonoBehaviour
         }
         return true;
     }
+
+
+    public int gridDistance(Vector3Int from, Vector3Int to)
+    {
+        int distance = 0;
+        foreach(var tile in GetLine(from, to))
+        {
+            distance++;
+        }
+
+        return distance;
+    }
+
 
     //Bresenhams algorithm
     private IEnumerable<Vector3Int> GetLine(Vector3Int from, Vector3Int to)
