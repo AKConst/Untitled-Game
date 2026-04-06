@@ -58,12 +58,15 @@ public class TileGridData : MonoBehaviour
         UpdateActiveTiles();
     }
 
+    //We update the currently active tiles
     public void UpdateActiveTiles()
     {
-        Vector3Int pPos = groundTiles.WorldToCell(playerPos.position);
+        Vector3Int pPos = groundTiles.WorldToCell(playerPos.position); //player position on the grid
 
+        //iterate over all positions
         foreach (Vector3Int pos in tiles.Keys)
         {
+            //if it falls outside the given range, it needs to be inactive
             if (Mathf.Clamp(pos.x, playerPos.position.x - activeRange, playerPos.position.x + activeRange) != pos.x ||
                     Mathf.Clamp(pos.y, playerPos.position.y - activeRange, playerPos.position.y + activeRange) != pos.y)
             {
@@ -71,6 +74,7 @@ public class TileGridData : MonoBehaviour
             }
             else
             {
+                //if it is within range, and we have LOS, it is active
                 if (HasLOS(pPos, pos))
                 {
                     tiles[pos].isActive = true;
@@ -79,7 +83,7 @@ public class TileGridData : MonoBehaviour
         }
     }
 
-    
+    //To draw the active tiles. Used for debugging
     private void OnDrawGizmos()
     {
         foreach(var tile in tiles.Keys)
@@ -92,7 +96,7 @@ public class TileGridData : MonoBehaviour
         }
     }
     
-
+    //Function to check if we have a LOS from and to a given position
     public bool HasLOS(Vector3Int from, Vector3Int to)
     {
         //iterate over each tile in the line
@@ -105,7 +109,7 @@ public class TileGridData : MonoBehaviour
         return true;
     }
 
-
+    //Function to calculate the distance on the grid between two positions
     public int gridDistance(Vector3Int from, Vector3Int to)
     {
         int distance = 0;

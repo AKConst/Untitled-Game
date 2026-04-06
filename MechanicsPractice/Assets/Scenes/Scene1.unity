@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 380931742}
   - component: {fileID: 380931741}
   - component: {fileID: 380931740}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LVL1_Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28841,6 +28841,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1981788454}
     m_Modifications:
+    - target: {fileID: 1458619108320767945, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2674193106553783683, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.85
@@ -28879,6 +28883,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674193106553783683, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306596987701070885, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306596987701070885, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306596987701070885, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
@@ -28931,10 +28947,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2508269dff883714ea401dede5cce846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eSightRange: 150
   target: {fileID: 1655454424}
+  steerRadius: 1.5
+  rb: {fileID: 978655381}
   groundTiles: {fileID: 1728058047}
   speed: 5
+--- !u!50 &978655381 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6306596987701070885, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+  m_PrefabInstance: {fileID: 768112915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142194780
 GameObject:
   m_ObjectHideFlags: 0
@@ -28974,7 +28996,7 @@ Transform:
   m_GameObject: {fileID: 1142194780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
