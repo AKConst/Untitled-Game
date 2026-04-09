@@ -28950,8 +28950,10 @@ MonoBehaviour:
   target: {fileID: 1655454424}
   steerRadius: 1.5
   rb: {fileID: 978655381}
+  pathfindTimer: 0
+  pathfindInterval: 0.5
   groundTiles: {fileID: 1728058047}
-  speed: 5
+  speed: 3
 --- !u!50 &978655381 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6306596987701070885, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
@@ -29019,7 +29021,7 @@ MonoBehaviour:
   groundTiles: {fileID: 1728058047}
   wallTiles: {fileID: 380931744}
   playerPos: {fileID: 1655454424}
-  activeRange: 5
+  activeRange: 3
 --- !u!1 &1237736028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8649028346022332829, guid: 9a0ccf6e322a46a438f5e6b54f6ad009, type: 3}

@@ -316,7 +316,7 @@ MonoBehaviour:
     m_Bits: 128
   attackPos: {fileID: 7724400188374715673}
   attackSprite: {fileID: 3831057972883764571, guid: 6f0cda5f348fcbf40ab9eeba198bf970, type: 3}
-  enemyHealth: 0
+  enemyHealth: 100
   enemyStaggerCount: 0
   enemyFocusCount: 0
   focusRegainTime: 0

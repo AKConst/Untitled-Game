@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using NUnit.Framework.Constraints;
 using UnityEditor.Experimental.GraphView;
+using System.Linq;
+using System.Collections;
 
 public class EnemyPathfindingGeneric : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class EnemyPathfindingGeneric : MonoBehaviour
     [SerializeField] private Transform target; //reference to chase target
     [SerializeField] private float steerRadius;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float pathfindInterval;
+    private float pathfindTimer = 0f;
+    private Coroutine followCoroutine;
 
     [Header("Tilemap data reference")]
     [SerializeField] private Tilemap groundTiles;
@@ -20,23 +25,21 @@ public class EnemyPathfindingGeneric : MonoBehaviour
     [SerializeField] private float speed;
 
     private bool hasLOS = false;
-    private bool closeToWall = false;
-    private bool closeToAnother = false;
+    private bool isMoving = false;
+
     private Vector3Int currPos;
     private Vector3Int targetPos;
 
-    private Vector3Int activeTilePos = new(); //temp value for debugging
+    private Vector3Int activeTilePos = new(); //temp value
+
 
     void Update()
     {
         currPos = new Vector3Int(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.y), Mathf.FloorToInt(transform.position.z));
         targetPos = new Vector3Int(Mathf.FloorToInt(target.position.x), Mathf.FloorToInt(target.position.y), Mathf.FloorToInt(target.position.z));
 
-        closeToWall = isCloseToWall(LayerMask.GetMask("Obstacle")); //check if we are close to a wall
-        closeToAnother = isCloseToWall(LayerMask.GetMask("Enemy")); //check if we are close to another enemy
-
         if (TileGridData.instance.HasLOS(currPos, targetPos))
-        {
+        { 
             hasLOS = true;
         }
         else
@@ -49,46 +52,31 @@ public class EnemyPathfindingGeneric : MonoBehaviour
     {
         if (hasLOS)
         {
-            moveTowards(transform.position, target.position, speed);
-        }
-        else
-        {
-            moveTowards(transform.position, findActiveTile(), speed);
+            pathfindTimer += Time.fixedDeltaTime;
+            if (pathfindTimer >= pathfindInterval)
+            {
+                pathfindTimer = 0f;
+                if (followCoroutine != null) StopCoroutine(followCoroutine);
+                followCoroutine = StartCoroutine(followPath());
+            }
         }
     }
 
-    //updating the state for the close to wall boolean
-    private bool isCloseToWall(LayerMask layer)
+    private IEnumerator followPath()
     {
-        var ictw = Physics2D.OverlapCircleAll(transform.position, steerRadius, layer);
-        if (ictw.Length > 0)
+        foreach (var tile in findPath(currPos, targetPos))
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            Vector3 targetPos = groundTiles.GetCellCenterWorld(tile);
+
+            while (Vector3.Distance(transform.position, targetPos) > 0.5f)
+            {
+                rb.MovePosition(Vector3.MoveTowards(transform.position, targetPos, speed * Time.fixedDeltaTime));
+                yield return new WaitForFixedUpdate();
+            }
         }
     }
 
-    //under construction
-    private Vector2 CalculateSteer(float sr, LayerMask layer)
-    {
-        Vector2 dir = default;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, sr, layer);
-
-        foreach(Collider2D collider in colliders)
-        {
-            Vector2 diff = (collider.ClosestPoint(transform.position) - (Vector2)transform.position);
-            float distance = Mathf.Max(diff.magnitude, 0.1f);
-            dir -= (diff / distance) / (distance * distance);
-        }
-
-        return dir.normalized;
-    }
-
-    private Vector3Int findActiveTile()
+    private void findActiveTile()
     {   
         Vector3Int furthestActiveTile = new();
 
@@ -108,8 +96,7 @@ public class EnemyPathfindingGeneric : MonoBehaviour
             }
         }
 
-        activeTilePos = furthestActiveTile; //temp, remove later
-        return furthestActiveTile;
+        if(!isMoving) activeTilePos = furthestActiveTile; //temp, remove later
     }
 
     //temp, debugging purpose
@@ -122,24 +109,98 @@ public class EnemyPathfindingGeneric : MonoBehaviour
         }
     }
 
-    private void moveTowards(Vector3 from, Vector3 to, float speed)
+    public List<Vector3Int> findPath(Vector3Int from, Vector3Int to)
     {
-        if (closeToWall)
+        //Convert our data to tilemap grid coordinates
+        Vector3Int fromToGrid = groundTiles.WorldToCell(from);
+        Vector3Int toToGrid = groundTiles.WorldToCell(to);
+
+        //Reference to our tiles, as well as instances of open and closed tiles
+        Dictionary<Vector3Int, TileInfo> tiles = TileGridData.instance.tiles;
+        foreach(var tile in tiles.Values)
         {
-            Vector2 steer = CalculateSteer(steerRadius, LayerMask.GetMask("Obstacle"));
-            Vector2 movDir = (to - from).normalized;
-            rb.MovePosition((Vector2)transform.position + (movDir + steer) * speed * Time.deltaTime);
+            tile.gCost = 0;
+            tile.hCost = 0;
+            tile.parent = null;
         }
-        else if (closeToAnother)
+
+        List<TileInfo> open = new List<TileInfo>();
+        HashSet<TileInfo> closed = new HashSet<TileInfo>();
+
+        //get our starting tile and set its initial values
+        TileInfo startTile = tiles[fromToGrid];
+        startTile.gCost = 0;
+        startTile.hCost = ManhattanDistance(fromToGrid, toToGrid);
+        open.Add(startTile);
+
+        while(open.Count > 0)
         {
-            Vector2 steer = CalculateSteer(steerRadius, LayerMask.GetMask("Enemy"));
-            Vector2 movDir = (to - from).normalized;
-            rb.MovePosition((Vector2)transform.position + (movDir + steer) * speed * Time.deltaTime);
+            //Getting the tile with the currently lowest total estimated path value
+            TileInfo curr = open.OrderBy(t => t.fCost).First();
+
+            if(curr.GridPos == toToGrid)
+            {
+                return reconstructPath(curr);
+            }
+
+            open.Remove(curr);
+            closed.Add(curr);
+
+            foreach(Vector3Int neighborPos in getNeighbors(curr.GridPos))
+            {
+                if (!tiles.ContainsKey(neighborPos)) continue;
+
+                TileInfo neightbor = tiles[neighborPos];
+
+                if (neightbor.isWall || closed.Contains(neightbor)) continue;
+
+                int tentativeG = curr.gCost + 1;
+
+                if(!open.Contains(neightbor) || tentativeG < neightbor.gCost)
+                {
+                    neightbor.gCost = tentativeG;
+                    neightbor.hCost = ManhattanDistance(neighborPos, to);
+                    neightbor.parent = curr;
+
+                    if(!open.Contains(neightbor)) open.Add(neightbor);
+                }
+            }
         }
-        else
+
+        return null;
+    }
+
+    private List<Vector3Int> reconstructPath(TileInfo end)
+    {
+        List<Vector3Int> path = new List<Vector3Int>();
+        TileInfo curr = end;
+        while(curr != null)
         {
-            Vector3 dir = (to - from).normalized;
-            rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
+            path.Add(curr.GridPos);
+            curr = curr.parent;
         }
+
+        path.Reverse();
+        return path;
+    }
+
+    private List<Vector3Int> getNeighbors(Vector3Int pos)
+    {
+        return new List<Vector3Int>
+        {
+            pos + new Vector3Int(1, 0, 0),
+            pos + new Vector3Int(-1, 0, 0),
+            pos + new Vector3Int(0, 1, 0),
+            pos + new Vector3Int(0, -1, 0),
+            pos + new Vector3Int(1, 1, 0),
+            pos + new Vector3Int(1, -1, 0),
+            pos + new Vector3Int(-1, 1, 0),
+            pos + new Vector3Int(-1, -1, 0),
+        };
+    }
+
+    private int ManhattanDistance(Vector3Int from, Vector3Int to)
+    {
+        return Mathf.Abs(from.x - to.x) + Mathf.Abs(from.y - to.y);
     }
 }
