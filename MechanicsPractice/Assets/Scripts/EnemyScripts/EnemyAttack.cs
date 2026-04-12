@@ -5,7 +5,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private int enemyDamage; //value to assign amount of damage the enemy deals
     public GameObject enemyInstance; //value that will hold the enemy game object, necessary when damage type is dealt.
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 8)  
         {

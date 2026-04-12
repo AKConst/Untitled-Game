@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
-    public static int playerHealth = 100; //value to track player HP
+    public static int playerHealth = 1000; //value to track player HP
+
     public static int maxHealAmt = 2;
     public static int healAmt = 0;
     public static Transform playerPos;
@@ -38,6 +39,7 @@ public class PlayerManager : MonoBehaviour
             {
                 updatePlayerStatus(0, 25, true);
                 healAmt -= 1;
+
                 if (healAmt == maxHealAmt)
                 {
                     guiDisplay.rootVisualElement.Q<VisualElement>("HealingSprite").style.backgroundImage = new StyleBackground(flaskSprites[0]);
@@ -50,6 +52,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     guiDisplay.rootVisualElement.Q<VisualElement>("HealingSprite").style.backgroundImage = new StyleBackground(flaskSprites[2]);
                 }
+
                 guiDisplay.rootVisualElement.Q<Label>("hpField").text = healAmt.ToString();
             }
             else

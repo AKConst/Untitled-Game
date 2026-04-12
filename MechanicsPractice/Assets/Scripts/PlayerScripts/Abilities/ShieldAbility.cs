@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 [CreateAssetMenu]
 public class ShieldAbility : Ability 
@@ -9,10 +8,9 @@ public class ShieldAbility : Ability
     public override void Activate(GameObject parent)
     {
         ParticleSystem shield = Instantiate(shieldParticle, parent.transform.position, Quaternion.identity, parent.transform);
-        MonoBehaviour parentMonoBehaviour = parent.GetComponent<MonoBehaviour>();
         
+        MonoBehaviour parentMonoBehaviour = parent.GetComponent<MonoBehaviour>(); 
         parentMonoBehaviour.StartCoroutine(deleteIndicator(shield));
-        
     }
 
     private IEnumerator deleteIndicator(ParticleSystem ind)

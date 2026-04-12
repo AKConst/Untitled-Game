@@ -1,3 +1,9 @@
+// CURRENTLY UNUSED SCRIPT. CODE FROM THIS SCRIPT IS KEPT EITHER FOR REFERENCE OR PARTS OF IT IS REPURPOSED
+// WHICH IS WHY IT STILL EXISTS, MAY OR MAY NOT BE COMPLETELY REMOVED AT A LATER DATE
+
+
+
+
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
@@ -30,8 +36,6 @@ public class EnemyPathfindingGeneric : MonoBehaviour
     private Vector3Int currPos;
     private Vector3Int targetPos;
 
-    private Vector3Int activeTilePos = new(); //temp value
-
 
     void Update()
     {
@@ -52,13 +56,7 @@ public class EnemyPathfindingGeneric : MonoBehaviour
     {
         if (hasLOS)
         {
-            pathfindTimer += Time.fixedDeltaTime;
-            if (pathfindTimer >= pathfindInterval)
-            {
-                pathfindTimer = 0f;
-                if (followCoroutine != null) StopCoroutine(followCoroutine);
-                followCoroutine = StartCoroutine(followPath());
-            }
+            //pathfinding
         }
     }
 
@@ -95,19 +93,8 @@ public class EnemyPathfindingGeneric : MonoBehaviour
                 }
             }
         }
-
-        if(!isMoving) activeTilePos = furthestActiveTile; //temp, remove later
     }
 
-    //temp, debugging purpose
-    public void OnDrawGizmos()
-    {
-        if (!hasLOS)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(activeTilePos, 0.35f);
-        }
-    }
 
     public List<Vector3Int> findPath(Vector3Int from, Vector3Int to)
     {
@@ -192,10 +179,10 @@ public class EnemyPathfindingGeneric : MonoBehaviour
             pos + new Vector3Int(-1, 0, 0),
             pos + new Vector3Int(0, 1, 0),
             pos + new Vector3Int(0, -1, 0),
-            pos + new Vector3Int(1, 1, 0),
+            /*pos + new Vector3Int(1, 1, 0),
             pos + new Vector3Int(1, -1, 0),
             pos + new Vector3Int(-1, 1, 0),
-            pos + new Vector3Int(-1, -1, 0),
+            pos + new Vector3Int(-1, -1, 0),*/
         };
     }
 

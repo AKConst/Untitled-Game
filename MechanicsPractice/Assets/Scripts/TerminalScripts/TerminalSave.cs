@@ -33,6 +33,7 @@ public class TerminalSave : MonoBehaviour
         abilityDisplay = menuRoot.Q<VisualElement>("AbilityDisplay");
         itemContentDisplay = menuRoot.Q<VisualElement>("ItemContentDisplay");
     }
+
     void Update()
     {
         if(playerInRange && Input.GetKeyDown(KeyCode.F) && !MenuOpen)

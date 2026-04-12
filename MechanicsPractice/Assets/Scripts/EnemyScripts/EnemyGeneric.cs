@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.AI;
 
 public class EnemyGeneric : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyGeneric : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private GameObject attackIndicator; //reference to our attack indicator
     [SerializeField] private float timeToAttack; //how long will the enemy charge up its attack
+    [SerializeField] private float attackCooldown; //how long will the enemy wait before being able to attack again.
     [SerializeField] private float atkHitRange; //how big is the range of the attack
     [SerializeField] private LayerMask whatIsPlayer; //layermask to know whether or not something is the player
     [SerializeField] private Transform attackPos; //position where the attack will spawn
@@ -35,13 +37,17 @@ public class EnemyGeneric : MonoBehaviour
     private Collider2D playerAttackArea;
 
     //detection settings for the enemy
-    [Header("Detection Settings")]
+    [Header("Detection And Chase Settings")]
+    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float DetectRange; //range for the area that the enemy can detect the player in
     [SerializeField] private float LeavePlayerRange; //range for the area for the enemy to leave the player alone
     [SerializeField] private float AttackRange; //range for the enemy to start its attack
+    [SerializeField] private float lingerTime; //time the enemy will stay at a position after chasing
+    private float currLingerTime;
+    private Vector3 originalPos;
 
     //lists of the chase scripts that will be used to enable/disable the enemy chasing when attacking or leaving the player
-    [SerializeField] private MonoBehaviour[] chaseScripts;
+    [SerializeField] private MonoBehaviour chaseScript;
     //script for aligning its attack pointer to the player
     private MonoBehaviour atkAlignScript; 
 
@@ -49,14 +55,18 @@ public class EnemyGeneric : MonoBehaviour
     private enum enemyState { enemyChase, enemyIdle, enemyAttack, enemyDamaged, enemyStaggered}; 
     private enemyState currState;
 
+
+    private void Awake()
+    {
+        currLingerTime = lingerTime;
+        originalPos = transform.position;
+    }
+
     void Start()
     {
         atkAlignScript = this.GetComponentInChildren<FacePlayer>(); //assigning value to the attack indicator align script
         //iterating through all chase scripts and disabling them, making the enemies main state to be idle
-        foreach (MonoBehaviour item in chaseScripts)
-        {
-            item.enabled = false;
-        }
+        chaseScript.enabled = false;
 
         //assigning the initial values for the variables that will vary/change
         enemyStaggerCountLive = enemyStaggerCount;
@@ -72,43 +82,42 @@ public class EnemyGeneric : MonoBehaviour
         {
             case enemyState.enemyChase:
                 //when chasing the player, we go through the chase scripts list and enable them all
-                foreach (MonoBehaviour item in chaseScripts)
-                {
-                    item.enabled = true;
-                }
+                chaseScript.enabled = true;
                 break;
             case enemyState.enemyAttack:
                 //when attacking, we check the appropriate conditions for attacking and if met
                 //we disable the chase scripts then proceed to run the attack coroutine
                 if (canAttack)
                 {
-                    foreach (MonoBehaviour item in chaseScripts)
-                    {
-                        item.enabled = false;
-                    }
+                    chaseScript.enabled = false;
+
                     StartCoroutine(Attack());
                 }
                 break;
             case enemyState.enemyIdle:
                 //when idling, we just disable the chase scripts yet again
-                foreach (MonoBehaviour item in chaseScripts)
+                chaseScript.enabled = false;
+
+                if(transform.position != originalPos)
                 {
-                    item.enabled = false;
+                    currLingerTime -= Time.deltaTime;
+                    if (currLingerTime <= 0)
+                    {
+                        agent.SetDestination(originalPos);
+                    }
+                }
+                else
+                {
+                    currLingerTime = lingerTime;
                 }
                 break;
             //we essentially put the functionality as if the enemy were idling, needs better implementation for
             //putting the enemy in an inactive state cause this is too much code reuse
             case enemyState.enemyDamaged:
-                foreach (MonoBehaviour item in chaseScripts)
-                {
-                    item.enabled = false;
-                }
+                chaseScript.enabled = false;
                 break;
-            case enemyState.enemyStaggered:  
-                foreach (MonoBehaviour item in chaseScripts)
-                {
-                    item.enabled = false;
-                }
+            case enemyState.enemyStaggered:
+                chaseScript.enabled = false;
                 break;
         }
     }
@@ -131,7 +140,7 @@ public class EnemyGeneric : MonoBehaviour
         {
             currState = enemyState.enemyAttack;
         }
-        else
+        else if (playerLeaveArea == null)
         {
             currState = enemyState.enemyIdle;
         }
@@ -173,7 +182,7 @@ public class EnemyGeneric : MonoBehaviour
         GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.identity);
         Attack.GetComponent<EnemyAttack>().enemyInstance = gameObject;
         StartCoroutine(deleteIndicator(Attack));
-        
+
         /*if (hitPlayer != null)
         {
             PlayerAttack player = hitPlayer.GetComponentInChildren<PlayerAttack>(); // finds the PlayerAttack script to check if player is blocking
@@ -192,13 +201,16 @@ public class EnemyGeneric : MonoBehaviour
                 Debug.Log("Attack was blocked!");
             }
         }*/
-
-        //setting our attack status booleans
-        canAttack = true;
+        
+        //we finished the attack but we are still under a cooldown
         isAttacking = false;
-
         //re-enabling the enemy facing direction indicator
         atkAlignScript.enabled = true;
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        //setting our attack status boolean
+        canAttack = true;
     }
 
     //function to draw on screen gizmos to better visualize the enemy state areas
@@ -217,7 +229,7 @@ public class EnemyGeneric : MonoBehaviour
     private IEnumerator deleteIndicator(GameObject ind)
     {
         //wait for 0.1 seconds before deleting the attack sprite
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.15f);
         Destroy(ind);
     }
 
