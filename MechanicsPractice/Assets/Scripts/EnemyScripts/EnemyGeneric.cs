@@ -32,7 +32,7 @@ public class EnemyGeneric : MonoBehaviour
     [SerializeField] private GameObject AttackCircle;
 
     //different Collider2D areas to check various conditions to change enemy state
-    private Collider2D playerLeaveArea; //ended up being unnecessary, will leave here if useful at any point
+    private Collider2D playerLeaveArea;
     private Collider2D playerDetectArea;
     private Collider2D playerAttackArea;
 
@@ -43,8 +43,8 @@ public class EnemyGeneric : MonoBehaviour
     [SerializeField] private float LeavePlayerRange; //range for the area for the enemy to leave the player alone
     [SerializeField] private float AttackRange; //range for the enemy to start its attack
     [SerializeField] private float lingerTime; //time the enemy will stay at a position after chasing
-    private float currLingerTime;
-    private Vector3 originalPos;
+    private float currLingerTime; //used for the actual calculation
+    private Vector3 originalPos; //original enemy spawn position
 
     //lists of the chase scripts that will be used to enable/disable the enemy chasing when attacking or leaving the player
     [SerializeField] private MonoBehaviour chaseScript;
@@ -52,7 +52,7 @@ public class EnemyGeneric : MonoBehaviour
     private MonoBehaviour atkAlignScript; 
 
     //enum of the various enemy states, as well as a variable to store the current state
-    private enum enemyState { enemyChase, enemyIdle, enemyAttack, enemyDamaged, enemyStaggered}; 
+    private enum enemyState { enemyChase, enemyIdle, enemyAttack, enemyDamaged, enemyStaggered }; 
     private enemyState currState;
 
 
@@ -162,45 +162,12 @@ public class EnemyGeneric : MonoBehaviour
         //we wait for the attack chargeup time to finish before we delete the indicator and proceed with the attack
         yield return new WaitForSeconds(timeToAttack);
 
-        //if the enemy has charged up it's attack but it's state has changed to damaged, the attack will be cancelled
-        if (currState == enemyState.enemyDamaged) { yield return 0; }
-
         Destroy(eAtkIndicatorInstance);
-
-        //we instantiate the sprite for the enemy attack
-        //GameObject eAtkHitAreaInstance = Instantiate(attackSprite, attackPos.position, Quaternion.identity);
-        //after waiting 0.1 seconds, we destroy the attack indicator
-        //yield return new WaitForSeconds(0.1f);
-        //Destroy(eAtkHitAreaInstance);
-
-        //we create an overlap circle that represents the attack hit area, and if the player was hit
-        //we destroy the player game object, disable this script and change the level to the death screen
-        //which is currently at index 4.
-        //Collider2D hitPlayer = Physics2D.OverlapCircle(attackPos.position, atkHitRange, whatIsPlayer);
         
         //instantiate the enemy attack object, set it's attack sender enemy instance to this enemy
         GameObject Attack = Instantiate(AttackCircle, attackPos.position, Quaternion.identity);
         Attack.GetComponent<EnemyAttack>().enemyInstance = gameObject;
         StartCoroutine(deleteIndicator(Attack));
-
-        /*if (hitPlayer != null)
-        {
-            PlayerAttack player = hitPlayer.GetComponentInChildren<PlayerAttack>(); // finds the PlayerAttack script to check if player is blocking
-            if (player == null)
-            {
-                Debug.Log("player null"); //error player is not found
-            }
-            else if(!player.isAttacking) // Player is not attacking
-            {
-                Destroy(hitPlayer.gameObject);
-                this.enabled = false;
-                GameManagerScript.instance.ChangeLevel(4);
-            }
-            else if (player.isAttacking)// Player is attacking
-            {
-                Debug.Log("Attack was blocked!");
-            }
-        }*/
         
         //we finished the attack but we are still under a cooldown
         isAttacking = false;

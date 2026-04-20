@@ -145,7 +145,8 @@ GameObject:
   - component: {fileID: 6306596987701070885}
   - component: {fileID: 1458619108320767945}
   - component: {fileID: 8014702137101606987}
-  - component: {fileID: 1362128241499900245}
+  - component: {fileID: 1404308747775344581}
+  - component: {fileID: 156256340300423405}
   m_Layer: 6
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -310,7 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackIndicator: {fileID: 1009437859774478199, guid: dbcd724108c58d54b86c89d8288704fe, type: 3}
-  timeToAttack: 0.5
+  timeToAttack: 1
+  attackCooldown: 1
   atkHitRange: 1
   whatIsPlayer:
     serializedVersion: 2
@@ -322,22 +324,45 @@ MonoBehaviour:
   enemyFocusCount: 0
   focusRegainTime: 0
   AttackCircle: {fileID: 3886228615816043654, guid: ac43253db55d5b143ab7851f08ace2d0, type: 3}
+  agent: {fileID: 156256340300423405}
   DetectRange: 10
   LeavePlayerRange: 17.5
   AttackRange: 1.25
-  chaseScripts:
-  - {fileID: 1362128241499900245}
---- !u!114 &1362128241499900245
+  lingerTime: 10
+  chaseScript: {fileID: 1404308747775344581}
+--- !u!114 &1404308747775344581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8760784778375647944}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ff76dd322404c49b6aaefa133d5c17, type: 3}
+  m_Script: {fileID: 11500000, guid: 208597243ecc5b44388d526273f3ef18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   groundTiles: {fileID: 0}
+--- !u!195 &156256340300423405
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760784778375647944}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.85
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 5
+  m_AngularSpeed: 120
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.5
+  m_BaseOffset: 0.75
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
