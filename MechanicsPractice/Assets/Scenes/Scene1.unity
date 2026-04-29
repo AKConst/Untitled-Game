@@ -28906,6 +28906,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: idleScript
+      value: 
+      objectReference: {fileID: 2020242223}
     - target: {fileID: 8760784778375647944, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
@@ -28913,7 +28917,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8760784778375647944, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 2020242223}
   m_SourcePrefab: {fileID: 100100000, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
 --- !u!4 &978655373 stripped
 Transform:
@@ -28981,8 +28988,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTiles: {fileID: 1728058047}
   wallTiles: {fileID: 380931744}
-  playerPos: {fileID: 1655454424}
-  activeRange: 3
+  targets:
+  - {fileID: 978655373}
+  activeRanges: 05000000
 --- !u!1 &1237736028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8649028346022332829, guid: 9a0ccf6e322a46a438f5e6b54f6ad009, type: 3}
@@ -127958,6 +127966,31 @@ Transform:
   - {fileID: 978655373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2020242216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8760784778375647944, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+  m_PrefabInstance: {fileID: 768112915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2020242223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020242216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14c069febc385e47b94507a49beeaf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useFixedPositions: 0
+  fixedPatrolPositions:
+  - {x: -2.09, y: 3.61, z: 0}
+  - {x: 3, y: -3, z: 0}
+  - {x: 1, y: 6, z: 0}
+  groundTiles: {fileID: 1728058047}
+  scatterPatrolRadius: 5
+  lingerTime: 5
 --- !u!1 &2039494335
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,7 +47,9 @@ public class EnemyGeneric : MonoBehaviour
     private Vector3 originalPos; //original enemy spawn position
 
     //lists of the chase scripts that will be used to enable/disable the enemy chasing when attacking or leaving the player
+    [Header("Behavior Scripts")]
     [SerializeField] private MonoBehaviour chaseScript;
+    [SerializeField] private MonoBehaviour idleScript;
     //script for aligning its attack pointer to the player
     private MonoBehaviour atkAlignScript; 
 
@@ -81,7 +83,9 @@ public class EnemyGeneric : MonoBehaviour
         switch (currState)
         {
             case enemyState.enemyChase:
-                //when chasing the player, we go through the chase scripts list and enable them all
+                //when chasing the player, we disable other scripts and enable the chase script
+                idleScript.enabled = false;
+
                 chaseScript.enabled = true;
                 break;
             case enemyState.enemyAttack:
@@ -89,6 +93,7 @@ public class EnemyGeneric : MonoBehaviour
                 //we disable the chase scripts then proceed to run the attack coroutine
                 if (canAttack)
                 {
+                    idleScript.enabled = false;
                     chaseScript.enabled = false;
 
                     StartCoroutine(Attack());
@@ -98,25 +103,16 @@ public class EnemyGeneric : MonoBehaviour
                 //when idling, we just disable the chase scripts yet again
                 chaseScript.enabled = false;
 
-                if(transform.position != originalPos)
-                {
-                    currLingerTime -= Time.deltaTime;
-                    if (currLingerTime <= 0)
-                    {
-                        agent.SetDestination(originalPos);
-                    }
-                }
-                else
-                {
-                    currLingerTime = lingerTime;
-                }
+                idleScript.enabled = true;
                 break;
             //we essentially put the functionality as if the enemy were idling, needs better implementation for
             //putting the enemy in an inactive state cause this is too much code reuse
             case enemyState.enemyDamaged:
+                idleScript.enabled = false;
                 chaseScript.enabled = false;
                 break;
             case enemyState.enemyStaggered:
+                idleScript.enabled = false;
                 chaseScript.enabled = false;
                 break;
         }

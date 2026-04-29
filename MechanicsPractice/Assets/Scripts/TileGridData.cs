@@ -12,9 +12,9 @@ public class TileGridData : MonoBehaviour
     [SerializeField] private Tilemap groundTiles; //reference to our ground tiles
     [SerializeField] private Tilemap wallTiles; //reference to our wall tiles
 
-    [Header("Player Relevant Information")]
-    [SerializeField] private Transform playerPos; //position of our player, used to update active tile data
-    [SerializeField] private int activeRange; //how large is the radius for the active tiles
+    [Header("Active Tile Data Calculation Targets")]
+    [SerializeField] private List<Transform> targets;
+    [SerializeField] private List<int> activeRanges;
 
     public Dictionary<Vector3Int, TileInfo> tiles = new(); //Dictionary of the positions mapped onto the data for each tile
 
@@ -55,27 +55,30 @@ public class TileGridData : MonoBehaviour
 
     private void Update()
     {
-        UpdateActiveTiles();
+        for(int i = 0; i < targets.Count; i++)
+        {
+            UpdateActiveTiles(targets[i], activeRanges[i]);
+        }
     }
 
     //We update the currently active tiles
-    public void UpdateActiveTiles()
+    public void UpdateActiveTiles(Transform target, int range)
     {
-        Vector3Int pPos = groundTiles.WorldToCell(playerPos.position); //player position on the grid
+        Vector3Int tPos = groundTiles.WorldToCell(target.position); //target position on the grid
 
         //iterate over all positions
         foreach (Vector3Int pos in tiles.Keys)
         {
             //if it falls outside the given range, it needs to be inactive
-            if (Mathf.Clamp(pos.x, playerPos.position.x - activeRange, playerPos.position.x + activeRange) != pos.x ||
-                    Mathf.Clamp(pos.y, playerPos.position.y - activeRange, playerPos.position.y + activeRange) != pos.y)
+            if (Mathf.Clamp(pos.x, target.position.x - range, target.position.x + range) != pos.x ||
+                    Mathf.Clamp(pos.y, target.position.y - range, target.position.y + range) != pos.y)
             {
                 tiles[pos].isActive = false;
             }
             else
             {
                 //if it is within range, and we have LOS, it is active
-                if (HasLOS(pPos, pos))
+                if (HasLOS(tPos, pos))
                 {
                     tiles[pos].isActive = true;
                 }
