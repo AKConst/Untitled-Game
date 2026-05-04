@@ -27,8 +27,8 @@ public class EnemyGeneric : MonoBehaviour
 
 
     //booleans for keeping track of attack status
-    private bool canAttack = true; 
-    private bool isAttacking = false;
+    public bool canAttack = true; 
+    public bool isAttacking = false;
     [SerializeField] private GameObject AttackCircle;
 
     //different Collider2D areas to check various conditions to change enemy state
@@ -50,6 +50,7 @@ public class EnemyGeneric : MonoBehaviour
     [Header("Behavior Scripts")]
     [SerializeField] private MonoBehaviour chaseScript;
     [SerializeField] private MonoBehaviour idleScript;
+    [SerializeField] MonoBehaviour attackScript;
     //script for aligning its attack pointer to the player
     private MonoBehaviour atkAlignScript; 
 
@@ -85,6 +86,7 @@ public class EnemyGeneric : MonoBehaviour
             case enemyState.enemyChase:
                 //when chasing the player, we disable other scripts and enable the chase script
                 idleScript.enabled = false;
+                atkAlignScript.enabled = true;
 
                 chaseScript.enabled = true;
                 break;
@@ -93,15 +95,17 @@ public class EnemyGeneric : MonoBehaviour
                 //we disable the chase scripts then proceed to run the attack coroutine
                 if (canAttack)
                 {
+                    atkAlignScript.enabled = false;
                     idleScript.enabled = false;
                     chaseScript.enabled = false;
 
-                    StartCoroutine(Attack());
+                    attackScript.GetComponent<EnemyAttackStateGeneric>().StartAttack();
                 }
                 break;
             case enemyState.enemyIdle:
-                //when idling, we just disable the chase scripts yet again
+                //when idling, we just disable the chase scripts yet 
                 chaseScript.enabled = false;
+                attackScript.enabled = false;
 
                 idleScript.enabled = true;
                 break;
@@ -142,6 +146,7 @@ public class EnemyGeneric : MonoBehaviour
         }
     }
 
+    /*
     private IEnumerator Attack()
     {
         //setting our booleans for the attacking status
@@ -175,6 +180,7 @@ public class EnemyGeneric : MonoBehaviour
         //setting our attack status boolean
         canAttack = true;
     }
+    */
 
     //function to draw on screen gizmos to better visualize the enemy state areas
     private void OnDrawGizmosSelected()

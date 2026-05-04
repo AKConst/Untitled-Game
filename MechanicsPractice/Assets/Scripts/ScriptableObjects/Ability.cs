@@ -9,7 +9,7 @@ public class Ability : ScriptableObject //We make a class to be used for all abi
     public float activeTime; //time while ability is active
     public Sprite itemSprite;
 
-    public virtual void Activate(GameObject parent) // virtual class to call ability
+    public virtual void Activate(GameObject parent) // virtual function to call ability
     {
 
     }

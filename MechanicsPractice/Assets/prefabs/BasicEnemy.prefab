@@ -146,6 +146,8 @@ GameObject:
   - component: {fileID: 1458619108320767945}
   - component: {fileID: 8014702137101606987}
   - component: {fileID: 1404308747775344581}
+  - component: {fileID: 1645928447881644864}
+  - component: {fileID: 1318380220426545672}
   - component: {fileID: 156256340300423405}
   m_Layer: 6
   m_Name: BasicEnemy
@@ -330,6 +332,7 @@ MonoBehaviour:
   AttackRange: 1.25
   lingerTime: 10
   chaseScript: {fileID: 1404308747775344581}
+  idleScript: {fileID: 1645928447881644864}
 --- !u!114 &1404308747775344581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +346,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  isMalee: 0
+  idealRange: 5
   groundTiles: {fileID: 0}
+--- !u!114 &1645928447881644864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760784778375647944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14c069febc385e47b94507a49beeaf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useFixedPositions: 0
+  fixedPatrolPositions:
+  - {x: -2.09, y: 3.61, z: 0}
+  - {x: 3, y: -3, z: 0}
+  - {x: 1, y: 6, z: 0}
+  groundTiles: {fileID: 0}
+  scatterPatrolRadius: 5
+  lingerTime: 5
+--- !u!114 &1318380220426545672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760784778375647944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a23041d1d9e4254ea96ac3b06c19c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackScripts:
+  - {fileID: 0}
+  isHybrid: 0
 --- !u!195 &156256340300423405
 NavMeshAgent:
   m_ObjectHideFlags: 0

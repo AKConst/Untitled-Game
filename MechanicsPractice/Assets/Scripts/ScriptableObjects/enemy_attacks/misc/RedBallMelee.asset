@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1824838bb6ebd4d428ee6e8012024b0a, type: 3}
+  m_Name: RedBallMelee
+  m_EditorClassIdentifier: 
+  attackObjects:
+  - {fileID: 3886228615816043654, guid: ac43253db55d5b143ab7851f08ace2d0, type: 3}
+  priorityValue: 100
+  indicators:
+  - {fileID: 1009437859774478199, guid: dbcd724108c58d54b86c89d8288704fe, type: 3}
+  - {fileID: 1009437859774478199, guid: 0cc473fc6eb714e48a30037cd1e8acd3, type: 3}
+  - {fileID: 1009437859774478199, guid: fee050d59c7ce4549a51588c249a596f, type: 3}
+  chargeUpTime: 1
+  attackCooldown: 1

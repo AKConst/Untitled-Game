@@ -6,8 +6,9 @@ public class PathfindingScript : MonoBehaviour
 {
     [Header("Pathfinding Attributes")]
     [SerializeField] private Transform target; //reference to chase target
+    [SerializeField] private bool isMalee; //boolean to decide how the enemy pathfinding will act
+    [SerializeField] private float idealRange; //used for ranged enemies to assign ideal range value
     private NavMeshAgent agent; //reference to our navmeshagent
-    private Vector3 originalPos;
 
     [Header("Tilemap data reference")]
     [SerializeField] private Tilemap groundTiles; //reference to our grind tiles tilemap
@@ -19,8 +20,6 @@ public class PathfindingScript : MonoBehaviour
 
     void Awake()
     {
-        originalPos = transform.position;
-
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -32,9 +31,27 @@ public class PathfindingScript : MonoBehaviour
         currPos = new Vector3Int(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.y), Mathf.FloorToInt(transform.position.z));
         targetPos = new Vector3Int(Mathf.FloorToInt(target.position.x), Mathf.FloorToInt(target.position.y), Mathf.FloorToInt(target.position.z));
 
-        if (TileGridData.instance.HasLOS(currPos, targetPos))
+        if (isMalee)
         {
-            agent.SetDestination(target.position);
+            if (TileGridData.instance.HasLOS(currPos, targetPos))
+            {
+                agent.SetDestination(target.position);
+            }
         }
+        else
+        {
+            if (TileGridData.instance.HasLOS(currPos, targetPos))
+            {
+                agent.SetDestination(findIdealRange());
+            }
+        }
+    }
+
+    private Vector3 findIdealRange()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 newTarget = target.position - direction * idealRange;
+
+        return newTarget;
     }
 }
