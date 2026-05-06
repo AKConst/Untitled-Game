@@ -33,17 +33,11 @@ public class PathfindingScript : MonoBehaviour
 
         if (isMalee)
         {
-            if (TileGridData.instance.HasLOS(currPos, targetPos))
-            {
-                agent.SetDestination(target.position);
-            }
+            agent.SetDestination(target.position);
         }
         else
         {
-            if (TileGridData.instance.HasLOS(currPos, targetPos))
-            {
-                agent.SetDestination(findIdealRange());
-            }
+            agent.SetDestination(findIdealRange());
         }
     }
 

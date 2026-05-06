@@ -28595,7 +28595,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 12.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -28732,7 +28732,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 15
+    OrthographicSize: 12.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -28858,26 +28858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1981788454}
     m_Modifications:
-    - target: {fileID: 1318380220426545672, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1318380220426545672, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
-      propertyPath: attackList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1318380220426545672, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
-      propertyPath: 'attackList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 9b44bd68736a4f24c919202cd329e8ca, type: 2}
     - target: {fileID: 1404308747775344581, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1655454424}
-    - target: {fileID: 1404308747775344581, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
-      propertyPath: isMalee
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1404308747775344581, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: groundTiles
       value: 
@@ -28926,10 +28910,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8014702137101606987, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
-      propertyPath: attackScript
+    - target: {fileID: 4319647035215118192, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
+      propertyPath: target
       value: 
-      objectReference: {fileID: 768112916}
+      objectReference: {fileID: 1655454424}
     - target: {fileID: 8760784778375647944, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
@@ -28939,17 +28923,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
---- !u!114 &768112916 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1318380220426545672, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}
-  m_PrefabInstance: {fileID: 768112915}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a23041d1d9e4254ea96ac3b06c19c2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &978655373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2674193106553783683, guid: 2d018a24ca01f2343bd15ee1b36fa9da, type: 3}

@@ -1,8 +1,6 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.PlayerSettings;
 using UnityEngine.Tilemaps;
 
 public class EnemyIdleScript : MonoBehaviour

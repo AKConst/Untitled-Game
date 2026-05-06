@@ -11,6 +11,7 @@ public class EnemyAttackSO : ScriptableObject
     public List<GameObject> indicators;
     public float chargeUpTime;
     public float attackCooldown;
+    public bool isRanged;
 
     public virtual IEnumerator Attack(GameObject parent)
     {
