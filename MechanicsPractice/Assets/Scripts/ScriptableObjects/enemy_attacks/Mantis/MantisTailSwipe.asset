@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1824838bb6ebd4d428ee6e8012024b0a, type: 3}
-  m_Name: RedBallMelee
+  m_Script: {fileID: 11500000, guid: b9c4490c654b59a44a8f53e1688c8e1e, type: 3}
+  m_Name: MantisTailSwipe
   m_EditorClassIdentifier: 
   attackObjects:
-  - {fileID: 3886228615816043654, guid: ac43253db55d5b143ab7851f08ace2d0, type: 3}
-  priorityValue: 100
+  - {fileID: 3635220152519287913, guid: 8b24a43d1ba1f44438740b3581b3951f, type: 3}
+  priorityValue: 40
   indicators:
   - {fileID: 1009437859774478199, guid: dbcd724108c58d54b86c89d8288704fe, type: 3}
   - {fileID: 1009437859774478199, guid: 0cc473fc6eb714e48a30037cd1e8acd3, type: 3}
   - {fileID: 1009437859774478199, guid: fee050d59c7ce4549a51588c249a596f, type: 3}
-  chargeUpTime: 1
+  chargeUpTime: 0.24
   attackCooldown: 1
+  isRanged: 0

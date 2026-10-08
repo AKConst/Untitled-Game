@@ -64,7 +64,6 @@ public class EnemyStateControl : MonoBehaviour
         }
         else if (playerLeaveArea == null)
         {
-            Debug.Log("because of this!");
             currState = enemyState.enemyIdle;
         }
     }

@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
-    public static int playerHealth = 1000; //value to track player HP
+    public static int playerHealth = 1000000; //value to track player HP - original 100
 
     public static int maxHealAmt = 2;
     public static int healAmt = 0;

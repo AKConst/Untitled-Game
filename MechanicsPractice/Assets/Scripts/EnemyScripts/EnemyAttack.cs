@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private int enemyDamage; //value to assign amount of damage the enemy deals
+    public string attackColor; //used to assing the attack color type
     public GameObject enemyInstance; //value that will hold the enemy game object, necessary when damage type is dealt.
 
     private void OnTriggerEnter2D(Collider2D other)

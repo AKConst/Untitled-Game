@@ -8,6 +8,13 @@ public class EnemyAttackStateGeneric : MonoBehaviour
     [SerializeField] private List<EnemyAttackSO> attackList;
     [SerializeField] private bool isHybrid;
 
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void StartAttack()
     {
         if (!isHybrid)
@@ -22,6 +29,7 @@ public class EnemyAttackStateGeneric : MonoBehaviour
                     currMax = i;
                 }
             }
+            animator.SetInteger("AttackIndex", currMax);
             StartCoroutine(attackList[currMax].Attack(gameObject));
         }
         else

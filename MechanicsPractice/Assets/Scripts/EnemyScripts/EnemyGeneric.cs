@@ -10,14 +10,11 @@ public class EnemyGeneric : MonoBehaviour
     //value to keep track when enemy will be staggered after a successful parry
     [SerializeField] private int enemyStaggerCount;
     private int enemyStaggerCountLive; //the value that we update and check. Will be reset to original value once <=0
-    //value to keep track of how many times the enemy will be able to finish an attack if interrupted by player attack
-    [SerializeField] private int enemyFocusCount;
-    private int enemyFocusCountLive; //the value that we update and check. Will be reset to original value once <=0
     private bool isStaggered = false; //to keep staggered status
     [SerializeField] private float focusRegainTime; //value to assign the value of how much time the enemy will refocus
 
     //booleans for keeping track of attack status
-    public bool canAttack = true; 
+    public bool canAttack = true;
     public bool isAttacking = false;
 
     //lists of the chase scripts that will be used to enable/disable the enemy chasing when attacking or leaving the player
@@ -26,11 +23,14 @@ public class EnemyGeneric : MonoBehaviour
     [SerializeField] private MonoBehaviour idleScript;
     [SerializeField] private MonoBehaviour attackScript;
     //script for aligning its attack pointer to the player
-    private MonoBehaviour atkAlignScript; 
+    private MonoBehaviour atkAlignScript;
 
     //enum of the various enemy states, as well as a variable to store the current state
-    public enum enemyState { enemyChase, enemyIdle, enemyAttack, enemyDamaged, enemyStaggered }; 
+    public enum enemyState { enemyChase, enemyIdle, enemyAttack, enemyDamaged, enemyStaggered };
     public enemyState currState;
+
+    private Animator animator;
+    private NavMeshAgent agent;
 
     void Start()
     {
@@ -40,7 +40,12 @@ public class EnemyGeneric : MonoBehaviour
 
         //assigning the initial values for the variables that will vary/change
         enemyStaggerCountLive = enemyStaggerCount;
-        enemyFocusCountLive = enemyFocusCount;
+        
+        //needed to control enemy animations, set initial values for idle animation to 0, -1 to look down.
+        animator = GetComponent<Animator>();
+        animator.SetFloat("LastH", 0);
+        animator.SetFloat("LastV", -1);
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -55,6 +60,20 @@ public class EnemyGeneric : MonoBehaviour
             atkAlignScript.enabled = true;
         }
 
+        //if there is movement, we update the lastH and lastV values constantly, when movement stops the program can now remember the last direction to look at
+        if (agent.velocity.magnitude != 0){
+            //setting the lastH and lastV (horiozntal, vertical) values to change where the enemy sprite looks at
+            animator.SetFloat("LastH", agent.velocity.x);
+            animator.SetFloat("LastV", agent.velocity.y);
+        }
+
+        //changing the speed, as well as horizontal and vertical values for the animator for the movement animations
+        animator.SetFloat("Speed", agent.velocity.magnitude);
+        animator.SetFloat("Horizontal", agent.velocity.x);
+        animator.SetFloat("Vertical", agent.velocity.y);
+        animator.SetBool("IsAttacking", isAttacking);
+
+        Debug.Log("Is Attacking: " + isAttacking+" Can Attack: "+canAttack);
         //based on the current state we run the appropriate function
         switch (currState)
         {
@@ -64,6 +83,8 @@ public class EnemyGeneric : MonoBehaviour
                 atkAlignScript.enabled = true;
 
                 chaseScript.enabled = true;
+
+                animator.speed = agent.velocity.magnitude * 0.1f;
                 break;
             case enemyState.enemyAttack:
                 //when attacking, we check the appropriate conditions for attacking and if met
@@ -82,6 +103,8 @@ public class EnemyGeneric : MonoBehaviour
                 attackScript.enabled = false;
 
                 idleScript.enabled = true;
+
+                animator.speed = agent.velocity.magnitude * 0.1f;
                 break;
             //we essentially put the functionality as if the enemy were idling, needs better implementation for
             //putting the enemy in an inactive state cause this is too much code reuse
@@ -111,7 +134,7 @@ public class EnemyGeneric : MonoBehaviour
         //we put the enemy in a damaged state-wait X amt of time-reset the state and focus counter.
         currState = enemyState.enemyDamaged;
         yield return new WaitForSeconds(focusRegainTime);
-        enemyFocusCountLive = enemyFocusCount;
+        enemyStaggerCountLive = enemyStaggerCount;
         currState = enemyState.enemyIdle;
     }
 
@@ -127,7 +150,7 @@ public class EnemyGeneric : MonoBehaviour
             Debug.Log("Stagger Enemy!");
             StartCoroutine(staggerEnemy(1f));
         }
-        else if (enemyFocusCountLive <= 0)
+        else if (enemyStaggerCountLive <= 0)
         {
             Debug.Log("Enemy attack can be interrupted!");
             StartCoroutine(resetFocus());
@@ -148,7 +171,7 @@ public class EnemyGeneric : MonoBehaviour
                 enemyStaggerCountLive -= amp;
                 break;
             case 2: 
-                enemyFocusCountLive -= amp;
+                enemyStaggerCountLive -= amp;
                 break;
             default:
                 Debug.Log("Enemy focus deprecated by " + amp + " damage!");

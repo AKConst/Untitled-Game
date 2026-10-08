@@ -57,7 +57,14 @@ public class TileGridData : MonoBehaviour
     {
         for(int i = 0; i < targets.Count; i++)
         {
-            UpdateActiveTiles(targets[i], activeRanges[i]);
+            try
+            {
+                UpdateActiveTiles(targets[i], activeRanges[i]);
+            }
+            catch (MissingReferenceException)
+            {
+                continue;
+            }
         }
     }
 

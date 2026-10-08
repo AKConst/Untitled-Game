@@ -71,7 +71,7 @@ Transform:
   m_GameObject: {fileID: 7052115220268215791}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 4.5, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 1645928447881644864}
   - component: {fileID: 1318380220426545672}
   - component: {fileID: 156256340300423405}
+  - component: {fileID: 6596231994919919182}
   m_Layer: 6
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -167,7 +168,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5542185398167891631}
@@ -217,8 +218,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 5546015779737830947, guid: a8a0fa927f7a3ec4da23728a42fa650a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -289,17 +290,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 7}
   m_EdgeRadius: 0
 --- !u!114 &8014702137101606987
 MonoBehaviour:
@@ -314,9 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 100
-  enemyStaggerCount: 0
-  enemyFocusCount: 0
-  focusRegainTime: 0
+  enemyStaggerCount: 2
+  focusRegainTime: 1
   canAttack: 1
   isAttacking: 0
   chaseScript: {fileID: 1404308747775344581}
@@ -339,7 +339,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   target: {fileID: 0}
-  attackRange: 1.25
+  attackRange: 2.35
   detectRange: 10
   leavePlayerRange: 17.5
 --- !u!114 &1404308747775344581
@@ -392,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackList:
   - {fileID: 11400000, guid: 9b44bd68736a4f24c919202cd329e8ca, type: 2}
+  - {fileID: 11400000, guid: 6c489e8574a683a40bb7e83d41eb2612, type: 2}
   isHybrid: 0
 --- !u!195 &156256340300423405
 NavMeshAgent:
@@ -402,16 +403,38 @@ NavMeshAgent:
   m_GameObject: {fileID: 8760784778375647944}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.85
+  m_Radius: 2.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 5
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.5
-  m_BaseOffset: 0.75
+  m_Height: 5.6
+  m_BaseOffset: 3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &6596231994919919182
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760784778375647944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bbf7cce99192c454a859874ab21aaccb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
